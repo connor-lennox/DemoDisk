@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7rxaeagsmc6v"]
+[gd_scene load_steps=17 format=3 uid="uid://b7rxaeagsmc6v"]
 
 [ext_resource type="Script" path="res://scenes/player_test_scene.gd" id="1_2ytob"]
 [ext_resource type="PackedScene" uid="uid://vi5ydb7g6j2x" path="res://nodes/player/player.tscn" id="1_ffqlx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://j8tcilti0ans" path="res://nodes/objects/fridge/fridge.tscn" id="8_a8p7k"]
 [ext_resource type="PackedScene" uid="uid://dte3uk5uqn7jl" path="res://nodes/objects/food_spawner/food_spawner.tscn" id="11_wdwv7"]
 [ext_resource type="Resource" uid="uid://ctf15b2ggcsm1" path="res://items/resources/burger_patty_raw_item.tres" id="12_ie5j2"]
+[ext_resource type="Resource" uid="uid://b64621o3jjgor" path="res://items/resources/burger_bread_item.tres" id="13_uqn7k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mx8i0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -113,3 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90601, 0, 0.970685)
 [node name="FoodSpawner" parent="." instance=ExtResource("11_wdwv7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03088, 2.01979, 0.776662)
 food_type = ExtResource("12_ie5j2")
+
+[node name="FoodSpawner2" parent="." instance=ExtResource("11_wdwv7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81124, 2.01979, 1.30278)
+food_type = ExtResource("13_uqn7k")
