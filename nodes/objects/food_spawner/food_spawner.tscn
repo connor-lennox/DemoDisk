@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dte3uk5uqn7jl"]
+
+[ext_resource type="Script" path="res://nodes/objects/food_spawner/food_spawner.gd" id="1_xswau"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lor5g"]
+radius = 0.25
+
+[node name="FoodSpawner" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_xswau")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("SphereShape3D_lor5g")
+
+[node name="MeshParent" type="Node3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="MeshSpawn1" type="Node3D" parent="MeshParent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0162292, 0, 0.093447)
+
+[node name="MeshSpawn2" type="Node3D" parent="MeshParent"]
+transform = Transform3D(0.961607, 0.243244, -0.127057, -0.274429, 0.852335, -0.445211, 7.45058e-09, 0.462987, 0.886365, 0.550075, 0.326972, 0.556076)
+
+[node name="MeshSpawn3" type="Node3D" parent="MeshParent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.323514, 0.0990008, -0.340614)
+
+[node name="MeshSpawn4" type="Node3D" parent="MeshParent"]
+transform = Transform3D(0.981567, -0.182861, -0.0555678, 0.191117, 0.939162, 0.285393, 3.72529e-09, -0.290752, 0.956798, -0.191865, 0.246356, -0.15527)
+
+[node name="MeshSpawn5" type="Node3D" parent="MeshParent"]
+transform = Transform3D(0.985331, -0.164652, 0.0448708, 0.170657, 0.950662, -0.259073, -3.72529e-09, 0.26293, 0.964815, -0.403515, 0.130865, 0.334694)

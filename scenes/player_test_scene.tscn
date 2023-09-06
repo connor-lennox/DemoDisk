@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7rxaeagsmc6v"]
+[gd_scene load_steps=16 format=3 uid="uid://b7rxaeagsmc6v"]
 
 [ext_resource type="Script" path="res://scenes/player_test_scene.gd" id="1_2ytob"]
 [ext_resource type="PackedScene" uid="uid://vi5ydb7g6j2x" path="res://nodes/player/player.tscn" id="1_ffqlx"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://diatgfafcgk42" path="res://nodes/objects/oven/oven.tscn" id="6_hpc75"]
 [ext_resource type="PackedScene" uid="uid://dkwyfpiptj64l" path="res://nodes/objects/counter/counter.tscn" id="6_ieb1w"]
 [ext_resource type="PackedScene" uid="uid://j8tcilti0ans" path="res://nodes/objects/fridge/fridge.tscn" id="8_a8p7k"]
+[ext_resource type="PackedScene" uid="uid://dte3uk5uqn7jl" path="res://nodes/objects/food_spawner/food_spawner.tscn" id="11_wdwv7"]
+[ext_resource type="Resource" uid="uid://ctf15b2ggcsm1" path="res://items/resources/burger_patty_raw_item.tres" id="12_ie5j2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mx8i0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -85,23 +87,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109656, 2.11379, 0.533505)
 [node name="oven" parent="Station2" instance=ExtResource("6_hpc75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02361, -7.15256e-07, -0.780981)
 
-[node name="Floor_Kitchen1" parent="." instance=ExtResource("3_mse3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0939918, 0, -3.02932)
-
-[node name="Floor_Kitchen2" parent="." instance=ExtResource("3_mse3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0939918, 0, 0.970685)
-
-[node name="Floor_Kitchen3" parent="." instance=ExtResource("3_mse3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09399, 0, -3.02932)
-
-[node name="Floor_Kitchen4" parent="." instance=ExtResource("3_mse3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09399, 0, 0.970685)
-
-[node name="Floor_Kitchen5" parent="." instance=ExtResource("3_mse3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90601, 0, -3.02932)
-
-[node name="Floor_Kitchen6" parent="." instance=ExtResource("3_mse3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90601, 0, 0.970685)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.405173, 0.91424, 0, -0.91424, -0.405173, 0, 2.55651, 0)
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="Floor_Kitchen1" parent="Floor" instance=ExtResource("3_mse3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0939918, 0, -3.02932)
+
+[node name="Floor_Kitchen2" parent="Floor" instance=ExtResource("3_mse3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0939918, 0, 0.970685)
+
+[node name="Floor_Kitchen3" parent="Floor" instance=ExtResource("3_mse3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09399, 0, -3.02932)
+
+[node name="Floor_Kitchen4" parent="Floor" instance=ExtResource("3_mse3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09399, 0, 0.970685)
+
+[node name="Floor_Kitchen5" parent="Floor" instance=ExtResource("3_mse3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90601, 0, -3.02932)
+
+[node name="Floor_Kitchen6" parent="Floor" instance=ExtResource("3_mse3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90601, 0, 0.970685)
+
+[node name="FoodSpawner" parent="." instance=ExtResource("11_wdwv7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03088, 2.01979, 0.776662)
+food_type = ExtResource("12_ie5j2")
