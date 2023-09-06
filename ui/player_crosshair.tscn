@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dswwd02hmgwf"]
+
+[ext_resource type="Script" path="res://ui/player_crosshair.gd" id="1_3j2iq"]
+
+[node name="PlayerCrosshair" type="ColorRect"]
+custom_minimum_size = Vector2(4, 4)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3j2iq")

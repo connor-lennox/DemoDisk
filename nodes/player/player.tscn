@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://vi5ydb7g6j2x"]
+
+[ext_resource type="Script" path="res://nodes/player/player.gd" id="1_wdyus"]
+
+[node name="Player" type="Node3D" groups=["player"]]
+script = ExtResource("1_wdyus")
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="CameraRig"]
+unique_name_in_owner = true
+
+[node name="InteractRaycast" type="RayCast3D" parent="CameraRig"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ItemAttachPoint" type="Node3D" parent="CameraRig"]
+unique_name_in_owner = true
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 0.318031, -0.283956, -0.448651)

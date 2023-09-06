@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://daex6ab5jturh"]
+
+[ext_resource type="Script" path="res://nodes/objects/sink/sink.gd" id="1_7h2nu"]
+[ext_resource type="PackedScene" uid="uid://bkrjalh5gxjh8" path="res://assets/restaurant/Kitchen_Sink_Water.glb" id="2_5iuyb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oe2w5"]
+size = Vector3(0.751839, 0.207388, 0.877249)
+
+[node name="Sink" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_7h2nu")
+
+[node name="Kitchen_Sink_Water" parent="." instance=ExtResource("2_5iuyb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61443, 0)
+shape = SubResource("BoxShape3D_oe2w5")
+
+[node name="DirtyPlateHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55423, 0)
+
+[node name="Node3D" type="Node3D" parent="DirtyPlateHolder"]
+transform = Transform3D(0.663458, 0.670858, -0.331321, -0.648862, 0.736369, 0.191676, 0.372561, 0.0878124, 0.923844, -0.204555, 0, -0.105317)
+
+[node name="Node3D2" type="Node3D" parent="DirtyPlateHolder"]
+transform = Transform3D(0.690803, -0.233322, 0.684362, 0.696268, 0.469853, -0.542632, -0.194941, 0.851352, 0.48703, 0.157029, 0, -0.105317)
+
+[node name="Node3D3" type="Node3D" parent="DirtyPlateHolder"]
+transform = Transform3D(0.706146, 0.0522674, 0.706135, 0.601891, -0.569578, -0.55974, 0.372942, 0.820274, -0.433664, -0.00389092, 0, 0.083015)
+
+[node name="CleanPlateHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.352107, 1.66469, 0.442492)

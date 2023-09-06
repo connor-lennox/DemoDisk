@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodItemType" load_steps=4 format=3 uid="uid://ctf15b2ggcsm1"]
+
+[ext_resource type="Resource" uid="uid://d3a31w5euiv3k" path="res://items/resources/burger_patty_cooked_item.tres" id="1_ke7t2"]
+[ext_resource type="PackedScene" uid="uid://b57mi263ylyl4" path="res://assets/food/BurgerPatty_Raw.glb" id="2_u5lu4"]
+[ext_resource type="Script" path="res://items/food_item_type.gd" id="3_v0b47"]
+
+[resource]
+script = ExtResource("3_v0b47")
+mesh = ExtResource("2_u5lu4")
+cook_result = ExtResource("1_ke7t2")

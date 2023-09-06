@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://diatgfafcgk42"]
+
+[ext_resource type="PackedScene" uid="uid://c0r6ow5sa6b4h" path="res://assets/restaurant/Kitchen_Oven_Large.glb" id="1_uauvj"]
+[ext_resource type="PackedScene" uid="uid://dqa7i036mmyrl" path="res://nodes/objects/oven/oven_burner.tscn" id="2_vv2v2"]
+
+[node name="Oven" type="Node3D"]
+
+[node name="Kitchen_Oven_Large" parent="." instance=ExtResource("1_uauvj")]
+
+[node name="LeftBurner" parent="." instance=ExtResource("2_vv2v2")]
+transform = Transform3D(0.621544, 0, -0.783379, 0, 1, 0, 0.783379, 0, 0.621544, -0.285876, 1.58324, 0.219625)
+
+[node name="RightBurner" parent="." instance=ExtResource("2_vv2v2")]
+transform = Transform3D(0.58835, 0, 0.808606, 0, 1, 0, -0.808606, 0, 0.58835, 0.279575, 1.58324, 0.219625)

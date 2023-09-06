@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqawlcoyfq2gy"]
+
+[ext_resource type="PackedScene" uid="uid://b7rxaeagsmc6v" path="res://scenes/player_test_scene.tscn" id="1_bvalh"]
+[ext_resource type="PackedScene" uid="uid://dswwd02hmgwf" path="res://ui/player_crosshair.tscn" id="2_hyu7j"]
+[ext_resource type="Shader" path="res://shaders/ps1-dither.gdshader" id="5_5ik63"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2rkd"]
+shader = ExtResource("5_5ik63")
+shader_parameter/color_depth = 5
+shader_parameter/dithering = true
+shader_parameter/resolution_scale = 1
+
+[node name="Node" type="Node"]
+
+[node name="GameLayer" type="CanvasLayer" parent="."]
+
+[node name="player_test_scene" parent="GameLayer" instance=ExtResource("1_bvalh")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PlayerCrosshair" parent="UI" instance=ExtResource("2_hyu7j")]
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_r2rkd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
