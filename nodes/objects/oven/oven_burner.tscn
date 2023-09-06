@@ -63,6 +63,7 @@ stream = ExtResource("3_1q6ff")
 emitting = false
 amount = 16
 lifetime = 2.0
+visibility_aabb = AABB(-0.274073, -0.02001, -0.287371, 0.514747, 1.19727, 0.540659)
 process_material = SubResource("ParticleProcessMaterial_hvvnv")
 draw_pass_1 = SubResource("BoxMesh_a3noj")
 

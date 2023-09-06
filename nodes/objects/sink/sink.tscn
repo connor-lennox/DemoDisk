@@ -68,6 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77964, -0.211469)
 emitting = false
 amount = 16
 lifetime = 0.5
+visibility_aabb = AABB(-0.02001, -0.286677, -0.02001, 0.04002, 0.306687, 0.04002)
 process_material = SubResource("ParticleProcessMaterial_gevf5")
 draw_pass_1 = SubResource("BoxMesh_sm6ai")
 
@@ -78,6 +79,7 @@ amount = 16
 lifetime = 0.75
 explosiveness = 0.5
 randomness = 0.5
+visibility_aabb = AABB(-0.397793, -0.11874, -0.331215, 0.781952, 0.425511, 0.572921)
 process_material = SubResource("ParticleProcessMaterial_ewacp")
 draw_pass_1 = SubResource("BoxMesh_sm6ai")
 
