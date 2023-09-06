@@ -4,6 +4,7 @@ extends Area3D
 const COOK_TIME = 10
 
 @onready var audio: AudioStreamPlayer3D = $"AudioStreamPlayer3D"
+@onready var smoke_particles: GPUParticles3D = $SmokeParticles
 
 @onready var item_holder: Node3D = $"ItemHolder"
 var held_item: Item = null
@@ -43,7 +44,7 @@ func interact(player: Player):
 func _give_item_to_player(player: Player):
 	var item: Item = held_item
 	held_item = null
-	_stop_effects()
+	_set_effects(false)
 	var tween = get_tree().create_tween()
 	tween.tween_property(item, "position", Vector3.UP * 0.1, 0.1)
 	tween.tween_callback(item.get_picked_up_by.bind(player))
@@ -59,13 +60,10 @@ func _take_item_from_player(player: Player):
 	tween.tween_property(item, "position", Vector3.UP * 0.1, 0.5)
 	tween.parallel().tween_property(item, "rotation", Vector3.ZERO, 0.5)
 	tween.tween_property(item, "position", Vector3.ZERO, 0.1)
-	tween.tween_callback(_start_effects)
+	tween.tween_callback(_set_effects.bind(true))
 	_restart_cooking()
 
 
-func _start_effects():
-	audio.play()
-
-
-func _stop_effects():
-	audio.stop()
+func _set_effects(state: bool):
+	audio.playing = state
+	smoke_particles.emitting = state
