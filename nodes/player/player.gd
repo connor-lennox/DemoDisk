@@ -39,7 +39,7 @@ func _process(_delta):
 
 
 func _input(event):
-	if event is InputEventMouseMotion and not moving and not locked:
+	if event is InputEventMouseMotion and not locked:
 		camera_rig.rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		var changev = -event.relative.y * mouse_sens
 		if camera_anglev + changev > -50 and camera_anglev + changev < 50:
