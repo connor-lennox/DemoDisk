@@ -7,7 +7,11 @@ func get_player_position() -> Node3D:
 	return player_position
 
 func activate():
-	pass
+	for child in get_children():
+		if child.is_in_group("station_element"):
+			child.station_activated()
 
 func deactivate():
-	pass
+	for child in get_children():
+		if child.is_in_group("station_element"):
+			child.station_deactivated()

@@ -58,7 +58,9 @@ func move_to_station(station_number: int):
 	# Deactivate the current station before we leave to avoid interactions
 	stations[current_station].deactivate()
 	
+	# Activate the new station
 	current_station = station_number
+	stations[current_station].activate()
 	
 	# Tween player position and rotation to align with target station
 	var target: Node3D = stations[current_station].get_player_position()
@@ -69,7 +71,6 @@ func move_to_station(station_number: int):
 	
 	# Stop "moving" and activate the current station
 	tween.tween_callback(self.set.bind("moving", false))
-	tween.tween_callback(stations[current_station].activate)
 
 
 func try_interact():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7rxaeagsmc6v"]
+[gd_scene load_steps=14 format=3 uid="uid://b7rxaeagsmc6v"]
 
 [ext_resource type="Script" path="res://scenes/player_test_scene.gd" id="1_2ytob"]
 [ext_resource type="PackedScene" uid="uid://vi5ydb7g6j2x" path="res://nodes/player/player.tscn" id="1_ffqlx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dpirem0bs2mvd" path="res://items/food_item.tscn" id="4_y7cvn"]
 [ext_resource type="PackedScene" uid="uid://diatgfafcgk42" path="res://nodes/objects/oven/oven.tscn" id="6_hpc75"]
 [ext_resource type="PackedScene" uid="uid://dkwyfpiptj64l" path="res://nodes/objects/counter/counter.tscn" id="6_ieb1w"]
+[ext_resource type="PackedScene" uid="uid://j8tcilti0ans" path="res://nodes/objects/fridge/fridge.tscn" id="8_a8p7k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mx8i0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -69,7 +70,10 @@ script = ExtResource("2_y0fa2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.210233, 2.11379, 0.683467)
 
 [node name="Sink" parent="Station1" instance=ExtResource("4_xgdie")]
-transform = Transform3D(1, 0, -5.56363e-08, 0, 1, 0, 5.56363e-08, 0, 1, 0.186887, -4.26326e-13, -0.635939)
+transform = Transform3D(1, 0, -5.56363e-08, 0, 1, 0, 5.56363e-08, 0, 1, -0.540062, -4.26326e-13, -0.635939)
+
+[node name="Fridge" parent="Station1" instance=ExtResource("8_a8p7k")]
+transform = Transform3D(0.965962, 0, -0.258684, 0, 1, 0, 0.258684, 0, 0.965962, 0.854885, 0, -0.569848)
 
 [node name="Station2" type="Node3D" parent="."]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.76718, 7.15256e-07, 0.922757)
