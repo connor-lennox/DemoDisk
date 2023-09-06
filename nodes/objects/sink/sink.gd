@@ -29,6 +29,16 @@ func _process(delta):
 			_stop_cleaning()
 
 
+# station_element functions
+func station_activated():
+	pass
+
+func station_deactivated():
+	# If you leave the station, the sink stops cleaning
+	_stop_cleaning()
+	_clear_particles()
+
+
 func interact(player: Player):
 	if player.currently_held_item == null:
 		# Try and take things out of the sink, or wash things if they're dirty
@@ -65,6 +75,13 @@ func _set_effects(state: bool):
 	faucet_particles.emitting = state
 	splash_particles.emitting = state
 	faucet_sound.playing = state
+
+
+func _clear_particles():
+	faucet_particles.restart()
+	faucet_particles.emitting = false
+	splash_particles.restart()
+	splash_particles.emitting = false
 
 
 func _wash_plate():

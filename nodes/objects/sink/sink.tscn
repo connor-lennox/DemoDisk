@@ -36,7 +36,7 @@ initial_velocity_min = 1.0
 initial_velocity_max = 1.0
 scale_curve = SubResource("CurveTexture_k2ytg")
 
-[node name="Sink" type="Area3D"]
+[node name="Sink" type="Area3D" groups=["station_element"]]
 collision_layer = 2
 collision_mask = 0
 monitoring = false
