@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://vi5ydb7g6j2x" path="res://nodes/player/player.tscn" id="1_ffqlx"]
 [ext_resource type="PackedScene" uid="uid://duxcdv8q4kaw" path="res://items/plate_item.tscn" id="2_nymif"]
 [ext_resource type="Script" path="res://nodes/station/station.gd" id="2_y0fa2"]
-[ext_resource type="PackedScene" uid="uid://wccr7kvvrsa" path="res://assets/restaurant/Kitchen_2Drawers.glb" id="3_kn5mr"]
 [ext_resource type="PackedScene" uid="uid://cmu31f6bsdcwm" path="res://assets/restaurant/Floor_Kitchen1.gltf" id="3_mse3d"]
 [ext_resource type="PackedScene" uid="uid://daex6ab5jturh" path="res://nodes/objects/sink/sink.tscn" id="4_xgdie"]
 [ext_resource type="PackedScene" uid="uid://dpirem0bs2mvd" path="res://items/food_item.tscn" id="4_y7cvn"]
 [ext_resource type="PackedScene" uid="uid://diatgfafcgk42" path="res://nodes/objects/oven/oven.tscn" id="6_hpc75"]
+[ext_resource type="PackedScene" uid="uid://dkwyfpiptj64l" path="res://nodes/objects/counter/counter.tscn" id="6_ieb1w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mx8i0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,19 +30,19 @@ script = ExtResource("1_2ytob")
 environment = SubResource("Environment_raqpb")
 
 [node name="PlateItem" parent="." instance=ExtResource("2_nymif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0290978, 1.74297, -3.35696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0290978, 2.06553, -3.35696)
 
 [node name="PlateItem3" parent="." instance=ExtResource("2_nymif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.417726, 1.74297, -3.35696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.417726, 2.06553, -3.35696)
 
 [node name="PlateItem2" parent="." instance=ExtResource("2_nymif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226129, 1.74297, -2.8096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226129, 2.06553, -2.8096)
 
 [node name="TestItem2" parent="." instance=ExtResource("4_y7cvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.717053, 1.62173, -3.23415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.717053, 1.94429, -3.23415)
 
 [node name="TestItem4" parent="." instance=ExtResource("4_y7cvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424295, 1.62173, -2.95137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.424295, 1.94429, -2.95137)
 
 [node name="Player" parent="." node_paths=PackedStringArray("stations") instance=ExtResource("1_ffqlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83466, 0)
@@ -55,8 +55,11 @@ script = ExtResource("2_y0fa2")
 [node name="PlayerPosition" type="Node3D" parent="Station0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11379, 1.78131)
 
-[node name="Kitchen_2Drawers" parent="Station0" instance=ExtResource("3_kn5mr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0723205, 0, 0.27882)
+[node name="Counter" parent="Station0" instance=ExtResource("6_ieb1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.539058, 0, 0.344252)
+
+[node name="Counter2" parent="Station0" instance=ExtResource("6_ieb1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.460942, 0, 0.344252)
 
 [node name="Station1" type="Node3D" parent="."]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.30936, 2.38419e-07, 0.0156212)

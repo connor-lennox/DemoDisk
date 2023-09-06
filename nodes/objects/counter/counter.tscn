@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkwyfpiptj64l"]
+
+[ext_resource type="PackedScene" uid="uid://wccr7kvvrsa" path="res://assets/restaurant/Kitchen_2Drawers.glb" id="1_d4g3h"]
+[ext_resource type="PackedScene" uid="uid://c2rgyfda25c45" path="res://nodes/objects/counter/counter_holder.tscn" id="2_ntucc"]
+
+[node name="Counter" type="Node3D"]
+
+[node name="Kitchen_2Drawers" parent="." instance=ExtResource("1_d4g3h")]
+
+[node name="CounterHolder" parent="." instance=ExtResource("2_ntucc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.210772, 1.63782, 0.291837)
+
+[node name="CounterHolder2" parent="." instance=ExtResource("2_ntucc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235092, 1.63782, 0.291837)
