@@ -1,10 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://daex6ab5jturh"]
+[gd_scene load_steps=11 format=3 uid="uid://daex6ab5jturh"]
 
 [ext_resource type="Script" path="res://nodes/objects/sink/sink.gd" id="1_7h2nu"]
 [ext_resource type="PackedScene" uid="uid://bkrjalh5gxjh8" path="res://assets/restaurant/Kitchen_Sink_Water.glb" id="2_5iuyb"]
+[ext_resource type="AudioStream" uid="uid://dj32s86g5thmd" path="res://assets/sounds/kitchen_sink_faucet.ogg" id="3_g2b43"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oe2w5"]
 size = Vector3(0.751839, 0.207388, 0.877249)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gevf5"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -2, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skyrd"]
+albedo_color = Color(0, 0.729412, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sm6ai"]
+material = SubResource("StandardMaterial3D_skyrd")
+size = Vector3(0.02, 0.02, 0.02)
+
+[sub_resource type="Curve" id="Curve_gkdh1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.831025, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_k2ytg"]
+curve = SubResource("Curve_gkdh1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ewacp"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.1, 0.01)
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -2, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_curve = SubResource("CurveTexture_k2ytg")
 
 [node name="Sink" type="Area3D"]
 collision_layer = 2
@@ -32,3 +62,25 @@ transform = Transform3D(0.706146, 0.0522674, 0.706135, 0.601891, -0.569578, -0.5
 
 [node name="CleanPlateHolder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.352107, 1.66469, 0.442492)
+
+[node name="FaucetParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77964, -0.211469)
+emitting = false
+amount = 16
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_gevf5")
+draw_pass_1 = SubResource("BoxMesh_sm6ai")
+
+[node name="SplashParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54607, -0.00733885)
+emitting = false
+amount = 16
+lifetime = 0.75
+explosiveness = 0.5
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_ewacp")
+draw_pass_1 = SubResource("BoxMesh_sm6ai")
+
+[node name="FaucetSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_g2b43")
+volume_db = -20.0

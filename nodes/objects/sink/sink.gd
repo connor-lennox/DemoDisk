@@ -3,6 +3,10 @@ extends Area3D
 const MAX_PLATES = 3
 const CLEAN_TIME = 3
 
+@onready var faucet_particles = $FaucetParticles
+@onready var splash_particles = $SplashParticles
+@onready var faucet_sound = $FaucetSound
+
 @onready var dirty_plate_holders: Array[Node] = $DirtyPlateHolder.get_children()
 @onready var clean_plate_holder: Node3D = $CleanPlateHolder
 
@@ -47,14 +51,20 @@ func interact(player: Player):
 
 
 func _start_cleaning():
-	# TODO: enable effects
 	cleaning = true
 	clean_timer = CLEAN_TIME
+	_set_effects(true)
 
 
 func _stop_cleaning():
-	# TODO: disable effects
 	cleaning = false
+	_set_effects(false)
+
+
+func _set_effects(state: bool):
+	faucet_particles.emitting = state
+	splash_particles.emitting = state
+	faucet_sound.playing = state
 
 
 func _wash_plate():
