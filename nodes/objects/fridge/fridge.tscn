@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://j8tcilti0ans"]
+
+[ext_resource type="PackedScene" uid="uid://cm8rs5t6hmb65" path="res://assets/restaurant/Fridge_Base.glb" id="1_c0fi3"]
+[ext_resource type="Script" path="res://nodes/objects/fridge/fridge.gd" id="1_ron03"]
+[ext_resource type="PackedScene" uid="uid://2ee18v3hw2nx" path="res://assets/restaurant/Fridge_Door.glb" id="2_r003q"]
+
+[node name="Fridge" type="Node3D" groups=["station_element"]]
+script = ExtResource("1_ron03")
+
+[node name="Fridge_Base" parent="." instance=ExtResource("1_c0fi3")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="Fridge_Door" parent="." instance=ExtResource("2_r003q")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.726, 1.62, 0.36)
