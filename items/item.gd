@@ -25,7 +25,7 @@ func interact(player: Player):
 	# Can't be picked up if the player is currently holding something else
 	if player.currently_held_item != null:
 		return
-	get_picked_up_by(player)
+	await get_picked_up_by(player)
 
 func get_picked_up_by(player: Player):
 	print("%s picked up %s" % [player, self])
@@ -41,3 +41,4 @@ func get_picked_up_by(player: Player):
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(self, "position", Vector3.ZERO, 0.5)
 	tween.tween_property(self, "rotation", Vector3.ZERO, 0.5)
+	await tween.finished

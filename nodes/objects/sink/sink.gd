@@ -49,12 +49,12 @@ func interact(player: Player):
 		
 		# If there are clean plates, we can take one out instead
 		if len(clean_plates) > 0:
-			_give_item_to_player(player)
+			await _give_item_to_player(player)
 			return true
 	else:
 		# Try and put a dirty plate into the sink
 		if player.currently_held_item is PlateItem and player.currently_held_item.dirty == true and len(dirty_plates) < MAX_PLATES:
-			_take_item_from_player(player)
+			await _take_item_from_player(player)
 			return true
 	
 	return false
@@ -94,7 +94,7 @@ func _wash_plate():
 
 func _give_item_to_player(player: Player):
 	var item: PlateItem = clean_plates.pop_back()
-	item.get_picked_up_by(player)
+	await item.get_picked_up_by(player)
 
 
 func _take_item_from_player(player: Player):
@@ -107,3 +107,4 @@ func _take_item_from_player(player: Player):
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(item, "global_position", holder.global_position, 0.5)
 	tween.tween_property(item, "global_rotation", holder.global_rotation, 0.5)
+	await tween.finished

@@ -8,8 +8,9 @@ extends Node3D
 @export var stations: Array[Station] = []
 var current_station: int = 0
 
-var moving: bool = false;
-var locked: bool = false;
+var moving: bool = false
+var interacting: bool = false
+var locked: bool = false
 
 @export var mouse_sens = 0.15
 var camera_anglev=0
@@ -34,7 +35,7 @@ func _process(_delta):
 		move_to_station((current_station + 1) % len(stations))
 	if Input.is_action_just_pressed("ui_left"):
 		move_to_station(current_station - 1 if current_station > 0 else len(stations) - 1)
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") and not interacting:
 		try_interact()
 
 
@@ -76,4 +77,7 @@ func move_to_station(station_number: int):
 func try_interact():
 	var col = interact_raycast.get_collider()
 	if col != null:
-		col.interact(self)
+		interacting = true
+		await col.interact(self)
+		interacting = false
+		print("interaction done!")

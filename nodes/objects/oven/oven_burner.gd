@@ -33,12 +33,12 @@ func _restart_cooking():
 func interact(player: Player):
 	if player.currently_held_item == null && held_item != null:
 		# Take the item off the burner
-		_give_item_to_player(player)
+		await _give_item_to_player(player)
 	
 	elif player.currently_held_item != null && held_item == null:
 		# Put an item on the burner, if possible
 		if player.currently_held_item is FoodItem and player.currently_held_item.food_type.cook_result != null:
-			_take_item_from_player(player)
+			await _take_item_from_player(player)
 
 
 func _give_item_to_player(player: Player):
@@ -48,6 +48,7 @@ func _give_item_to_player(player: Player):
 	var tween = get_tree().create_tween()
 	tween.tween_property(item, "position", Vector3.UP * 0.1, 0.1)
 	tween.tween_callback(item.get_picked_up_by.bind(player))
+	await tween.finished
 
 
 func _take_item_from_player(player: Player):
@@ -62,6 +63,7 @@ func _take_item_from_player(player: Player):
 	tween.tween_property(item, "position", Vector3.ZERO, 0.1)
 	tween.tween_callback(_set_effects.bind(true))
 	_restart_cooking()
+	await tween.finished
 
 
 func _set_effects(state: bool):

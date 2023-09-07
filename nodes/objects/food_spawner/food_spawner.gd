@@ -18,4 +18,4 @@ func interact(player: Player):
 		var food_item: FoodItem = food_item_scene.instantiate() as FoodItem
 		food_item.call_deferred("_set_food_type", food_type)
 		add_child(food_item)
-		food_item.get_picked_up_by(player)
+		await food_item.get_picked_up_by(player)
