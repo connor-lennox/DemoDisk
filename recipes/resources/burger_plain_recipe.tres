@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://olgescaucs5r"]
+
+[ext_resource type="Resource" uid="uid://b64621o3jjgor" path="res://items/resources/burger_bread_item.tres" id="1_imj5r"]
+[ext_resource type="Resource" uid="uid://d3a31w5euiv3k" path="res://items/resources/burger_patty_cooked_item.tres" id="2_lkicw"]
+[ext_resource type="Resource" uid="uid://jwvaebva0p7y" path="res://items/resources/burger_plain_item.tres" id="3_ryk56"]
+[ext_resource type="Script" path="res://recipes/recipe.gd" id="4_krbjt"]
+
+[resource]
+script = ExtResource("4_krbjt")
+ingredients = Array[Resource("res://items/food_item_type.gd")]([ExtResource("1_imj5r"), ExtResource("2_lkicw")])
+result = ExtResource("3_ryk56")

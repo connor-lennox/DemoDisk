@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FoodItemType" load_steps=3 format=3 uid="uid://d1absmo4k2t4o"]
+
+[ext_resource type="PackedScene" uid="uid://ep2cyogmjc3w" path="res://assets/food/Burger_Cheese.glb" id="1_bkufo"]
+[ext_resource type="Script" path="res://items/food_item_type.gd" id="1_gbv4m"]
+
+[resource]
+script = ExtResource("1_gbv4m")
+mesh = ExtResource("1_bkufo")
