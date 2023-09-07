@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdii7r8j2p5h8"]
+
+[ext_resource type="Script" path="res://scenes/customer_test_scene.gd" id="1_5rypk"]
+[ext_resource type="PackedScene" uid="uid://03f307g5cj2y" path="res://nodes/customers/customer.tscn" id="2_k8jtg"]
+[ext_resource type="PackedScene" uid="uid://cmu31f6bsdcwm" path="res://assets/restaurant/Floor_Kitchen1.gltf" id="3_w06q0"]
+
+[node name="customer_test_scene" type="Node3D"]
+script = ExtResource("1_5rypk")
+
+[node name="Customer1" parent="." instance=ExtResource("2_k8jtg")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.192559, -0.481686, 0.854927, 0, 0.871232, 0.490872, -0.981285, -0.0945219, 0.167764, 4.16206, 2.86576, 2.75204)
+
+[node name="Floor_Kitchen1" parent="." instance=ExtResource("3_w06q0")]
