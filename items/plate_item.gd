@@ -10,6 +10,9 @@ var dirty_plate_scene = preload("res://assets/restaurant/Plate_Dirty.glb")
 var ingredients: Array[FoodItem] = []
 var dirty: bool = false: set = _set_dirty
 
+var finished_recipe: FoodItemType
+
+
 func _set_dirty(new_dirty: bool):
 	dirty = new_dirty
 	_set_mesh(dirty_plate_scene if dirty else clean_plate_scene)
@@ -61,6 +64,7 @@ func receive_food_item(food_item: FoodItem) -> bool:
 func _complete_recipe(recipe: Recipe):
 	# Ok, a recipe has been completed! We need to put its mesh on the plate
 	# and hide all the ingredients.
+	finished_recipe = recipe.result
 	
 	# Hide all the ingredients by hiding their common root
 	food_stack_base.visible = false
@@ -78,6 +82,7 @@ func _complete_recipe(recipe: Recipe):
 func _uncomplete_recipe():
 	# It is possible we go from "finished" to "unfinished" while makign complex recipes.
 	# So, we need to "un-finish" and reset that state.
+	finished_recipe = null
 	
 	# Destroy any previously finished recipe
 	for child in finished_recipe_base.get_children():
