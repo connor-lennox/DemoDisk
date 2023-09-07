@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=3 uid="uid://cuxomlju4e5xg"]
+
+[ext_resource type="PackedScene" uid="uid://wccr7kvvrsa" path="res://assets/restaurant/Kitchen_2Drawers.glb" id="1_56kw6"]
+[ext_resource type="Script" path="res://nodes/objects/cutting_board/cutting_board.gd" id="1_l5tv5"]
+[ext_resource type="PackedScene" uid="uid://dn8rx6tw2eb7b" path="res://assets/restaurant/CuttingBoard.glb" id="2_5dnfn"]
+[ext_resource type="PackedScene" uid="uid://bttaq10dsv1sl" path="res://assets/restaurant/ChefKnife.glb" id="3_8h8jo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nkafs"]
+size = Vector3(0.9, 0.1, 0.7)
+
+[sub_resource type="Animation" id="Animation_aqbef"]
+resource_name = "chop"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChefKnife:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.101085, 1.82536, 0.322792), Vector3(-0.101085, 1.70269, 0.322792), Vector3(-0.0430962, 1.83095, 0.322792), Vector3(-0.0430962, 1.6733, 0.322792), Vector3(0.0647078, 1.85477, 0.322792), Vector3(0.0647078, 1.68605, 0.322792)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChefKnife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.353482, -1.43936)]
+}
+
+[sub_resource type="Animation" id="Animation_vebq5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChefKnife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.263562, 1.63303, 0.322792)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChefKnife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_43gys"]
+resource_name = "put_down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChefKnife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.263562, 1.63303, 0.322792)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChefKnife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrk6k"]
+_data = {
+"RESET": SubResource("Animation_vebq5"),
+"chop": SubResource("Animation_aqbef"),
+"put_down": SubResource("Animation_43gys")
+}
+
+[node name="CuttingBoard" type="Area3D" groups=["station_element"]]
+collision_layer = 2
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_l5tv5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65837, 0.240299)
+shape = SubResource("BoxShape3D_nkafs")
+
+[node name="Kitchen_2Drawers" parent="." instance=ExtResource("1_56kw6")]
+
+[node name="CuttingBoard" parent="." instance=ExtResource("2_5dnfn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.62283, 0.233416)
+
+[node name="ChefKnife" parent="." instance=ExtResource("3_8h8jo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.263562, 1.63303, 0.322792)
+
+[node name="ItemHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72482, 0.247825)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_default_blend_time = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_hrk6k")
+}
+blend_times = [&"RESET", &"RESET", 0.2, &"RESET", &"chop", 0.2]

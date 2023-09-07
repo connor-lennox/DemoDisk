@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3 uid="uid://bg0wf8fd74f11"]
+
+[ext_resource type="Resource" uid="uid://b64621o3jjgor" path="res://items/resources/burger_bread_item.tres" id="1_i32uc"]
+[ext_resource type="Script" path="res://recipes/recipe.gd" id="1_rlgoh"]
+[ext_resource type="Resource" uid="uid://d3a31w5euiv3k" path="res://items/resources/burger_patty_cooked_item.tres" id="2_e8vm1"]
+[ext_resource type="Resource" uid="uid://bi80xqad2yft1" path="res://items/resources/cheese_item.tres" id="3_80y3i"]
+[ext_resource type="Resource" uid="uid://bfe7017fsjevh" path="res://items/resources/lettuce_slice_item.tres" id="4_se2u7"]
+[ext_resource type="Resource" uid="uid://b25jgixfwertj" path="res://items/resources/tomato_slice_item.tres" id="5_klrsd"]
+[ext_resource type="Resource" uid="uid://bk6tvxdtrq8tj" path="res://items/resources/burger_deluxe_item.tres" id="6_yxwsd"]
+
+[resource]
+script = ExtResource("1_rlgoh")
+ingredients = Array[Resource("res://items/food_item_type.gd")]([ExtResource("1_i32uc"), ExtResource("2_e8vm1"), ExtResource("3_80y3i"), ExtResource("4_se2u7"), ExtResource("5_klrsd")])
+result = ExtResource("6_yxwsd")

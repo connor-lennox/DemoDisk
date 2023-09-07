@@ -52,6 +52,8 @@ func receive_food_item(food_item: FoodItem) -> bool:
 	if completed_recipe != null:
 		print("Completed recipe! %s" % completed_recipe)
 		_complete_recipe(completed_recipe)
+	else:
+		_uncomplete_recipe()
 	
 	return true
 
@@ -67,8 +69,25 @@ func _complete_recipe(recipe: Recipe):
 	for child in finished_recipe_base.get_children():
 		child.queue_free()
 	
-	# TODO: Smoke puff effect!
+	_smoke_puff()
 	
 	# Add the new item as a child
 	var new_result = recipe.result.mesh.instantiate()
 	finished_recipe_base.add_child(new_result)
+
+func _uncomplete_recipe():
+	# It is possible we go from "finished" to "unfinished" while makign complex recipes.
+	# So, we need to "un-finish" and reset that state.
+	
+	# Destroy any previously finished recipe
+	for child in finished_recipe_base.get_children():
+		child.queue_free()
+	
+	_smoke_puff()
+	
+	# Show all the ingredients by hiding their common root
+	food_stack_base.visible = true
+
+
+func _smoke_puff():
+	pass

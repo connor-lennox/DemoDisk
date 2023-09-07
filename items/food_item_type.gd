@@ -6,3 +6,4 @@ extends Resource
 
 # If these is null, the item cannot be processed in that way.
 @export var cook_result: FoodItemType
+@export var chop_result: FoodItemType

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodItemType" load_steps=4 format=3 uid="uid://dfuhv7ss7s8qa"]
+
+[ext_resource type="Script" path="res://items/food_item_type.gd" id="1_bkepk"]
+[ext_resource type="Resource" uid="uid://bfe7017fsjevh" path="res://items/resources/lettuce_slice_item.tres" id="1_mvtul"]
+[ext_resource type="PackedScene" uid="uid://xkr6ta0dvt4l" path="res://assets/food/Lettuce_Whole.glb" id="1_u67dv"]
+
+[resource]
+script = ExtResource("1_bkepk")
+mesh = ExtResource("1_u67dv")
+chop_result = ExtResource("1_mvtul")
