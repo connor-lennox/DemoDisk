@@ -3,7 +3,7 @@ extends Area3D
 const ITEM_PICKUP_TIME = 0.25
 
 const MAX_PLATES = 3
-const CLEAN_TIME = 3
+const CLEAN_TIME = 2
 
 @onready var faucet_particles = $FaucetParticles
 @onready var splash_particles = $SplashParticles
