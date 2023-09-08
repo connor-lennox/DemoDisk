@@ -25,5 +25,4 @@ transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 0.
 [node name="SwishSfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_f3l5b")
 attenuation_model = 3
-volume_db = -3.0
 pitch_scale = 0.8
