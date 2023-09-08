@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cuxomlju4e5xg"]
+[gd_scene load_steps=11 format=3 uid="uid://cuxomlju4e5xg"]
 
 [ext_resource type="PackedScene" uid="uid://wccr7kvvrsa" path="res://assets/restaurant/Kitchen_2Drawers.glb" id="1_56kw6"]
 [ext_resource type="Script" path="res://nodes/objects/cutting_board/cutting_board.gd" id="1_l5tv5"]
 [ext_resource type="PackedScene" uid="uid://dn8rx6tw2eb7b" path="res://assets/restaurant/CuttingBoard.glb" id="2_5dnfn"]
 [ext_resource type="PackedScene" uid="uid://bttaq10dsv1sl" path="res://assets/restaurant/ChefKnife.glb" id="3_8h8jo"]
+[ext_resource type="AudioStream" uid="uid://cp1fmj4y414sk" path="res://assets/sounds/cutting_board_chop.ogg" id="5_65pr1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nkafs"]
 size = Vector3(0.9, 0.1, 0.7)
@@ -63,6 +64,29 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, -0.353482, -1.43936)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_65pr1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_65pr1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_65pr1")
+}],
+"times": PackedFloat32Array(0.1, 0.5, 0.9)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_43gys"]
 resource_name = "put_down"
@@ -126,3 +150,5 @@ libraries = {
 "": SubResource("AnimationLibrary_hrk6k")
 }
 blend_times = [&"RESET", &"RESET", 0.2, &"RESET", &"chop", 0.2]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

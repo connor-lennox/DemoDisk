@@ -27,3 +27,4 @@ func _take_item_from_player(player: Player):
 	tween.tween_property(item, "position", Vector3.ZERO, 0.5)
 	tween.tween_property(item, "rotation", Vector3.ZERO, 0.5)
 	await tween.finished
+	item.put_down()

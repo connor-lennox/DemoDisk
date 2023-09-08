@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://duxcdv8q4kaw"]
+[gd_scene load_steps=6 format=3 uid="uid://duxcdv8q4kaw"]
 
 [ext_resource type="Script" path="res://items/plate_item.gd" id="1_3cnim"]
 [ext_resource type="PackedScene" uid="uid://bf33khcnfppid" path="res://assets/restaurant/Plate.glb" id="2_x4xmc"]
+[ext_resource type="AudioStream" uid="uid://cpathetfufl8h" path="res://assets/sounds/plate_pick_up.ogg" id="3_5ng7l"]
+[ext_resource type="AudioStream" uid="uid://cp238v2isfc0r" path="res://assets/sounds/plate_put_down.ogg" id="4_27pln"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8who7"]
 radius = 0.25
@@ -26,3 +28,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
 
 [node name="FinishedRecipeBase" type="Node3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.138988, 0)
+
+[node name="PickupSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_5ng7l")
+
+[node name="PutDownSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_27pln")

@@ -64,6 +64,7 @@ func _take_item_from_player(player: Player):
 	tween.tween_callback(_set_effects.bind(true))
 	_restart_cooking()
 	await tween.finished
+	item.put_down()
 
 
 func _set_effects(state: bool):

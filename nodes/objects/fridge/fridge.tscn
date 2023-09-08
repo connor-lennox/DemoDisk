@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://j8tcilti0ans"]
+[gd_scene load_steps=6 format=3 uid="uid://j8tcilti0ans"]
 
 [ext_resource type="PackedScene" uid="uid://cm8rs5t6hmb65" path="res://assets/restaurant/Fridge_Base.glb" id="1_c0fi3"]
 [ext_resource type="Script" path="res://nodes/objects/fridge/fridge.gd" id="1_ron03"]
 [ext_resource type="PackedScene" uid="uid://2ee18v3hw2nx" path="res://assets/restaurant/Fridge_Door.glb" id="2_r003q"]
+[ext_resource type="AudioStream" uid="uid://dthyqlmwafm6i" path="res://assets/sounds/fridge_open.ogg" id="4_tknja"]
+[ext_resource type="AudioStream" uid="uid://djfg8go61sh2i" path="res://assets/sounds/fridge_close.ogg" id="5_6qmkw"]
 
 [node name="Fridge" type="Node3D" groups=["station_element"]]
 script = ExtResource("1_ron03")
@@ -12,3 +14,9 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="Fridge_Door" parent="." instance=ExtResource("2_r003q")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.726, 1.62, 0.36)
+
+[node name="OpenSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_tknja")
+
+[node name="CloseSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_6qmkw")

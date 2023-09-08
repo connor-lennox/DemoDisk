@@ -87,6 +87,7 @@ func _clear_particles():
 func _wash_plate():
 	var plate = dirty_plates.pop_back()
 	plate.dirty = false
+	plate.put_down()
 	clean_plates.append(plate)
 	plate.global_position = clean_plate_holder.global_position + Vector3.UP * 0.05 * (len(clean_plates)-1)
 	plate.global_rotation = Vector3.ZERO
@@ -108,3 +109,4 @@ func _take_item_from_player(player: Player):
 	tween.tween_property(item, "global_position", holder.global_position, 0.5)
 	tween.tween_property(item, "global_rotation", holder.global_rotation, 0.5)
 	await tween.finished
+	item.put_down()

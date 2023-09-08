@@ -4,6 +4,9 @@ extends Node3D
 @onready var mesh_root = $"MeshRoot"
 @onready var collider = $"CollisionShape3D"
 
+@onready var pickup_sfx: AudioStreamPlayer3D = get_node_or_null("PickupSfx")
+@onready var put_down_sfx: AudioStreamPlayer3D = get_node_or_null("PutDownSfx")
+
 var interactable: bool = true: set = _set_interactable
 
 func _set_mesh(mesh_scene: PackedScene):
@@ -28,7 +31,7 @@ func interact(player: Player):
 	await get_picked_up_by(player)
 
 func get_picked_up_by(player: Player):
-	print("%s picked up %s" % [player, self])
+	pickup()
 	
 	# Tell the player we've been picked up
 	player.currently_held_item = self
@@ -42,3 +45,12 @@ func get_picked_up_by(player: Player):
 	tween.tween_property(self, "position", Vector3.ZERO, 0.5)
 	tween.tween_property(self, "rotation", Vector3.ZERO, 0.5)
 	await tween.finished
+
+
+func pickup():
+	if pickup_sfx != null:
+		pickup_sfx.play()
+
+func put_down():
+	if put_down_sfx != null:
+		put_down_sfx.play()
