@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://bc7fw6ecvwcv6"]
+
+[ext_resource type="PackedScene" uid="uid://cmu31f6bsdcwm" path="res://assets/restaurant/Floor_Kitchen1.gltf" id="1_2ddkf"]
+[ext_resource type="PackedScene" uid="uid://dkwyfpiptj64l" path="res://nodes/objects/counter/counter.tscn" id="2_7gbyc"]
+[ext_resource type="PackedScene" uid="uid://daex6ab5jturh" path="res://nodes/objects/sink/sink.tscn" id="3_spkdr"]
+[ext_resource type="PackedScene" uid="uid://cuxomlju4e5xg" path="res://nodes/objects/cutting_board/cutting_board.tscn" id="4_vsbeb"]
+[ext_resource type="PackedScene" uid="uid://dte3uk5uqn7jl" path="res://nodes/objects/food_spawner/food_spawner.tscn" id="5_akbar"]
+[ext_resource type="PackedScene" uid="uid://diatgfafcgk42" path="res://nodes/objects/oven/oven.tscn" id="5_w7kgg"]
+[ext_resource type="Resource" uid="uid://ctf15b2ggcsm1" path="res://items/resources/burger_patty_raw_item.tres" id="6_42vfm"]
+[ext_resource type="PackedScene" uid="uid://j8tcilti0ans" path="res://nodes/objects/fridge/fridge.tscn" id="6_fpovt"]
+[ext_resource type="Resource" uid="uid://b64621o3jjgor" path="res://items/resources/burger_bread_item.tres" id="7_q7it2"]
+[ext_resource type="Resource" uid="uid://bi80xqad2yft1" path="res://items/resources/cheese_item.tres" id="8_j6w5v"]
+
+[node name="Restaurant" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Floor" type="Node3D" parent="Environment"]
+
+[node name="Floor_Kitchen1" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+
+[node name="Floor_Kitchen2" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Floor_Kitchen3" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="Floor_Kitchen4" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Floor_Kitchen5" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="Floor_Kitchen6" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Floor_Kitchen7" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Floor_Kitchen8" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="Floor_Kitchen9" parent="Environment/Floor" instance=ExtResource("1_2ddkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="Stations" type="Node3D" parent="."]
+
+[node name="ServeStation" type="Node3D" parent="Stations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="PlayerPosition" type="Node3D" parent="Stations/ServeStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+
+[node name="Counter" parent="Stations/ServeStation" instance=ExtResource("2_7gbyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -1)
+
+[node name="Counter2" parent="Stations/ServeStation" instance=ExtResource("2_7gbyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1)
+
+[node name="OvenStation" type="Node3D" parent="Stations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="PlayerPosition" type="Node3D" parent="Stations/OvenStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+
+[node name="Oven" parent="Stations/OvenStation" instance=ExtResource("5_w7kgg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0.5)
+
+[node name="Counter3" parent="Stations/OvenStation" instance=ExtResource("2_7gbyc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -0.5)
+
+[node name="FridgeStation" type="Node3D" parent="Stations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="PlayerPosition" type="Node3D" parent="Stations/FridgeStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+
+[node name="Fridge" parent="Stations/FridgeStation" instance=ExtResource("6_fpovt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.5)
+
+[node name="FoodSpawner" parent="Stations/FridgeStation/Fridge" instance=ExtResource("5_akbar")]
+transform = Transform3D(-0.258684, 0, 0.965962, 0, 1, 0, -0.965962, 0, -0.258684, -0.129885, 2.01979, -0.122233)
+food_type = ExtResource("6_42vfm")
+
+[node name="FoodSpawner2" parent="Stations/FridgeStation/Fridge" instance=ExtResource("5_akbar")]
+transform = Transform3D(-0.258684, 0, 0.965962, 0, 1, 0, -0.965962, 0, -0.258684, 0.356961, 2.01979, -0.0823138)
+food_type = ExtResource("7_q7it2")
+
+[node name="FoodSpawner3" parent="Stations/FridgeStation/Fridge" instance=ExtResource("5_akbar")]
+transform = Transform3D(-0.258684, 0, 0.965962, 0, 1, 0, -0.965962, 0, -0.258684, -0.0862443, 1.65454, -0.0321147)
+food_type = ExtResource("8_j6w5v")
+
+[node name="SinkStation" type="Node3D" parent="Stations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="PlayerPosition" type="Node3D" parent="Stations/SinkStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+
+[node name="CuttingBoard" parent="Stations/SinkStation" instance=ExtResource("4_vsbeb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0.5)
+
+[node name="Sink" parent="Stations/SinkStation" instance=ExtResource("3_spkdr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -0.5)
