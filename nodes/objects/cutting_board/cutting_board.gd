@@ -1,5 +1,7 @@
 extends Area3D
 
+const ITEM_PICKUP_TIME = 0.25
+
 # Time it takes to chop a single thing, in seconds
 const TIME_TO_CHOP: float = 1.5
 
@@ -30,7 +32,6 @@ func _process(delta):
 func _start_chopping():
 	chopping = true
 	done_chopping = false
-	chop_timer = TIME_TO_CHOP
 	animation_player.play("chop")
 
 func _stop_chopping():
@@ -64,9 +65,10 @@ func _take_item_from_player(player: Player):
 	item.reparent(item_holder)
 	held_item = item
 	done_chopping = false
+	chop_timer = TIME_TO_CHOP
 	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(item, "position", Vector3.ZERO, 0.5)
-	tween.tween_property(item, "rotation", Vector3.ZERO, 0.5)
+	tween.tween_property(item, "position", Vector3.ZERO, ITEM_PICKUP_TIME)
+	tween.tween_property(item, "rotation", Vector3.ZERO, ITEM_PICKUP_TIME)
 	await tween.finished
 	item.put_down()
 

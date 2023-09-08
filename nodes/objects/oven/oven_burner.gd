@@ -3,6 +3,8 @@ extends Area3D
 # Cook time in seconds
 const COOK_TIME = 10
 
+const ITEM_PICKUP_TIME = 0.25
+
 @onready var audio: AudioStreamPlayer3D = $"AudioStreamPlayer3D"
 @onready var smoke_particles: GPUParticles3D = $SmokeParticles
 
@@ -58,9 +60,9 @@ func _take_item_from_player(player: Player):
 	item.reparent(item_holder)
 	held_item = item
 	var tween = get_tree().create_tween()
-	tween.tween_property(item, "position", Vector3.UP * 0.1, 0.5)
-	tween.parallel().tween_property(item, "rotation", Vector3.ZERO, 0.5)
-	tween.tween_property(item, "position", Vector3.ZERO, 0.1)
+	tween.tween_property(item, "position", Vector3.UP * 0.1, ITEM_PICKUP_TIME)
+	tween.parallel().tween_property(item, "rotation", Vector3.ZERO, ITEM_PICKUP_TIME)
+	tween.tween_property(item, "position", Vector3.ZERO, 0.05)
 	tween.tween_callback(_set_effects.bind(true))
 	_restart_cooking()
 	await tween.finished

@@ -1,5 +1,7 @@
 extends Area3D
 
+const ITEM_PICKUP_TIME = 0.25
+
 const MAX_PLATES = 3
 const CLEAN_TIME = 3
 
@@ -62,7 +64,8 @@ func interact(player: Player):
 
 func _start_cleaning():
 	cleaning = true
-	clean_timer = CLEAN_TIME
+	if (clean_timer <= 0):
+		clean_timer = CLEAN_TIME
 	_set_effects(true)
 
 
@@ -106,7 +109,7 @@ func _take_item_from_player(player: Player):
 	dirty_plates.append(item)
 	var holder = dirty_plate_holders[len(dirty_plates) - 1]
 	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(item, "global_position", holder.global_position, 0.5)
-	tween.tween_property(item, "global_rotation", holder.global_rotation, 0.5)
+	tween.tween_property(item, "global_position", holder.global_position, ITEM_PICKUP_TIME)
+	tween.tween_property(item, "global_rotation", holder.global_rotation, ITEM_PICKUP_TIME)
 	await tween.finished
 	item.put_down()

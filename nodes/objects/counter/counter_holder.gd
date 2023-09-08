@@ -1,5 +1,7 @@
 extends Area3D
 
+const ITEM_PICKUP_TIME = 0.25
+
 @onready var item_holder: Node3D = $"ItemHolder"
 var held_item: Item = null
 
@@ -24,7 +26,7 @@ func _take_item_from_player(player: Player):
 	item.reparent(item_holder)
 	held_item = item
 	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(item, "position", Vector3.ZERO, 0.5)
-	tween.tween_property(item, "rotation", Vector3.ZERO, 0.5)
+	tween.tween_property(item, "position", Vector3.ZERO, ITEM_PICKUP_TIME)
+	tween.tween_property(item, "rotation", Vector3.ZERO, ITEM_PICKUP_TIME)
 	await tween.finished
 	item.put_down()

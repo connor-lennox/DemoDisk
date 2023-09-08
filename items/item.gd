@@ -1,6 +1,8 @@
 class_name Item
 extends Node3D
 
+const ITEM_PICKUP_TIME = 0.25
+
 @onready var mesh_root = $"MeshRoot"
 @onready var collider = $"CollisionShape3D"
 
@@ -42,8 +44,8 @@ func get_picked_up_by(player: Player):
 	# Tween into place
 	self.reparent(player.item_attach_point)
 	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(self, "position", Vector3.ZERO, 0.5)
-	tween.tween_property(self, "rotation", Vector3.ZERO, 0.5)
+	tween.tween_property(self, "position", Vector3.ZERO, ITEM_PICKUP_TIME)
+	tween.tween_property(self, "rotation", Vector3.ZERO, ITEM_PICKUP_TIME)
 	await tween.finished
 
 
