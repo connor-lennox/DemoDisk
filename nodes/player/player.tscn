@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://vi5ydb7g6j2x"]
+[gd_scene load_steps=3 format=3 uid="uid://vi5ydb7g6j2x"]
 
 [ext_resource type="Script" path="res://nodes/player/player.gd" id="1_wdyus"]
+[ext_resource type="AudioStream" uid="uid://4ula6jb1q52f" path="res://assets/sounds/move_swish.ogg" id="2_f3l5b"]
 
 [node name="Player" type="Node3D" groups=["player"]]
 script = ExtResource("1_wdyus")
@@ -20,3 +21,9 @@ collide_with_bodies = false
 [node name="ItemAttachPoint" type="Node3D" parent="CameraRig"]
 unique_name_in_owner = true
 transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 0.318031, -0.283956, -0.448651)
+
+[node name="SwishSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_f3l5b")
+attenuation_model = 3
+volume_db = -3.0
+pitch_scale = 0.8

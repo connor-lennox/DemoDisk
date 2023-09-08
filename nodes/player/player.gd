@@ -1,6 +1,8 @@
 class_name Player
 extends Node3D
 
+const TIME_TO_MOVE = 0.3
+
 @onready var camera_rig: Node3D = $"CameraRig"
 @onready var camera: Camera3D = $"%Camera"
 @onready var interact_raycast: RayCast3D = $"%InteractRaycast"
@@ -20,6 +22,8 @@ var camera_anglev=0
 
 var currently_held_item: Item = null
 @onready var item_attach_point: Node3D = $"%ItemAttachPoint"
+
+@onready var swish_sfx = $SwishSfx
 
 
 func _ready():
@@ -63,12 +67,14 @@ func move_to_station(station_number: int):
 	current_station = station_number
 	stations[current_station].activate()
 	
+	swish_sfx.play()
+	
 	# Tween player position and rotation to align with target station
 	var target: Node3D = stations[current_station].get_player_position()
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", target.global_position, 0.5)
+	tween.tween_property(self, "global_position", target.global_position, TIME_TO_MOVE)
 	var rotation_target = Vector3(0, global_rotation.y + wrapf(target.global_rotation.y - global_rotation.y, -PI, PI), 0)
-	tween.parallel().tween_property(self, "global_rotation", rotation_target, 0.5)
+	tween.parallel().tween_property(self, "global_rotation", rotation_target, TIME_TO_MOVE)
 	
 	# Stop "moving" and activate the current station
 	tween.tween_callback(self.set.bind("moving", false))
