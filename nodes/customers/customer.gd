@@ -1,5 +1,5 @@
 class_name Customer
-extends Node3D
+extends Area3D
 
 const MECH_MODELS = [
 	"res://assets/mechs/George.gltf", "res://assets/mechs/Leela.gltf", "res://assets/mechs/Mike.gltf", "res://assets/mechs/Stan.gltf"
@@ -12,10 +12,13 @@ signal finished_moving
 signal finished_rotating
 
 @onready var character_root: Node3D = $CharacterRoot
+@onready var item_receiver: Node3D = $ItemReceiver
 
 var mech: Node3D
 var mech_animator: AnimationPlayer
+
 var order: Order
+var received_items: Array[FoodItemType]
 
 var walking: bool = false
 var movement_target: Vector3
@@ -56,6 +59,32 @@ func _rotate(delta):
 		finished_rotating.emit()
 
 
+func interact(player: Player):
+	# Customers can receive food items either:
+	#  1. as a completed recipe on a plate
+	#  2. as a loose FoodItem
+	# Because recipe construction can only happen on plates,
+	# this doesn't remove the need for them. Giving loose FoodItems will
+	# only be relevant for "simple" things (drinks, etc.)
+	
+	if player.currently_held_item is PlateItem:
+		var plate_recipe = player.currently_held_item.held_recipe
+		if plate_recipe in order.requirements and not plate_recipe in received_items: 
+			await _take_item_from_player(player)
+			received_items.append(plate_recipe)
+			if _check_requirements_satisfied():
+				print("Order done!")
+			return
+	
+	if player.currently_held_item is FoodItem:
+		var food_item = player.currently_held_item.food_type
+		if food_item in order.requirements and not food_item in received_items:
+			await _take_item_from_player(player)
+			received_items.append(food_item)
+			if _check_requirements_satisfied():
+				print("Order done!")
+			return
+
 func move_to_position(target: Vector3):
 	walking = true
 	movement_target = target
@@ -64,3 +93,20 @@ func move_to_position(target: Vector3):
 func rotate_to_angle_degrees(target: float):
 	rotating = true
 	rotation_target = deg_to_rad(target)
+
+
+func _take_item_from_player(player: Player):
+	var item = player.currently_held_item
+	player.currently_held_item = null
+	item.reparent(item_receiver)
+	var tween = get_tree().create_tween().set_parallel()
+	tween.tween_property(item, "position", Vector3.ZERO, 0.5)
+	tween.tween_property(item, "rotation", Vector3.ZERO, 0.5)
+	await tween.finished
+	item.queue_free()
+
+
+func _check_requirements_satisfied():
+	# Because an order can only contain one of any given item,
+	# this is sufficient to state the order is "complete"
+	return len(order.requirements) == len(received_items)

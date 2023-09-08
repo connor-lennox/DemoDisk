@@ -5,3 +5,6 @@ extends Object
 # satisfied to succeed with the order.
 
 var requirements: Array[FoodItemType]
+
+func _init(req: Array[FoodItemType]=[]):
+	requirements = req
