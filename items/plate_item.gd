@@ -48,8 +48,8 @@ func receive_food_item(food_item: FoodItem) -> bool:
 	ingredients.append(food_item)
 	food_item.reparent(food_stack_base)
 	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(food_item, "position", Vector3.UP * 0.06 * (len(ingredients) - 1), 0.5)
-	tween.tween_property(food_item, "rotation", Vector3.ZERO, 0.5)
+	tween.tween_property(food_item, "position", Vector3.UP * 0.06 * (len(ingredients) - 1), ITEM_PICKUP_TIME)
+	tween.tween_property(food_item, "rotation", Vector3.ZERO, ITEM_PICKUP_TIME)
 	
 	var completed_recipe = RecipeManager.get_recipe(food_types)
 	if completed_recipe != null:
