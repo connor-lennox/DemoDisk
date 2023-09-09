@@ -2,6 +2,7 @@ extends Node3D
 
 
 @onready var customer1: Customer = $Customer1
+@onready var customer_manager = $CustomerManager
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,3 +19,8 @@ func _ready():
 		
 		customer1.rotate_to_angle_degrees(0)
 		await customer1.finished_rotating
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		customer_manager.pop_customer()

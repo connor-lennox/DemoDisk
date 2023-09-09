@@ -11,6 +11,8 @@ const ROTATION_SPEED = 2
 signal finished_moving
 signal finished_rotating
 
+signal order_satisfied
+
 @onready var character_root: Node3D = $CharacterRoot
 @onready var item_receiver: Node3D = $ItemReceiver
 
@@ -25,6 +27,8 @@ var movement_target: Vector3
 
 var rotating: bool = false
 var rotation_target: float
+
+var interactable: bool = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -66,6 +70,8 @@ func interact(player: Player):
 	# Because recipe construction can only happen on plates,
 	# this doesn't remove the need for them. Giving loose FoodItems will
 	# only be relevant for "simple" things (drinks, etc.)
+	if not interactable:
+		return
 	
 	if player.currently_held_item is PlateItem:
 		var plate_recipe = player.currently_held_item.held_recipe
@@ -82,7 +88,7 @@ func interact(player: Player):
 			await _take_item_from_player(player)
 			received_items.append(food_item)
 			if _check_requirements_satisfied():
-				print("Order done!")
+				_complete_order()
 			return
 
 func move_to_position(target: Vector3):
@@ -105,8 +111,11 @@ func _take_item_from_player(player: Player):
 	await tween.finished
 	item.queue_free()
 
-
 func _check_requirements_satisfied():
 	# Because an order can only contain one of any given item,
 	# this is sufficient to state the order is "complete"
 	return len(order.requirements) == len(received_items)
+
+func _complete_order():
+	print("Order done!")
+	order_satisfied.emit()
