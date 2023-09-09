@@ -11,4 +11,4 @@ func _ready():
 	$PlateItem.dirty = true
 	$PlateItem3.dirty = true
 
-	$Customer.order = Order.new([load("res://items/resources/burger_cheese.tres"), load("res://items/resources/tomato_whole_item.tres")])
+	$Customer.order = Order.new([load("res://items/resources/burger_cheese_item.tres"), load("res://items/resources/tomato_whole_item.tres")])
