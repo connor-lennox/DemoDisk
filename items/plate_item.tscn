@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://duxcdv8q4kaw"]
+[gd_scene load_steps=13 format=3 uid="uid://duxcdv8q4kaw"]
 
 [ext_resource type="Script" path="res://items/plate_item.gd" id="1_3cnim"]
 [ext_resource type="PackedScene" uid="uid://bf33khcnfppid" path="res://assets/restaurant/Plate.glb" id="2_x4xmc"]
@@ -7,6 +7,35 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8who7"]
 radius = 0.25
+
+[sub_resource type="Gradient" id="Gradient_lh0x2"]
+colors = PackedColorArray(0.493545, 0.493546, 0.493546, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ky8lr"]
+gradient = SubResource("Gradient_lh0x2")
+
+[sub_resource type="Curve" id="Curve_3upo6"]
+_data = [Vector2(0, 0.842105), 0.0, 0.0, 0, 0, Vector2(0.121884, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f5j0e"]
+curve = SubResource("Curve_3upo6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_owt0n"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 0.4
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_f5j0e")
+color_ramp = SubResource("GradientTexture1D_ky8lr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwtmm"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.372549, 0.372549, 0.372549, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vf82"]
+material = SubResource("StandardMaterial3D_vwtmm")
+size = Vector3(0.15, 0.15, 0.15)
 
 [node name="PlateItem" type="Area3D"]
 collision_layer = 2
@@ -34,3 +63,13 @@ stream = ExtResource("3_5ng7l")
 
 [node name="PutDownSfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_27pln")
+
+[node name="RecipeFinishParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14982, 0)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB(-0.398932, -0.350604, -0.408839, 0.834513, 0.693431, 0.760097)
+process_material = SubResource("ParticleProcessMaterial_owt0n")
+draw_pass_1 = SubResource("BoxMesh_3vf82")

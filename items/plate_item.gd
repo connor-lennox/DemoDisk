@@ -6,6 +6,7 @@ var dirty_plate_scene = preload("res://assets/restaurant/Plate_Dirty.glb")
 
 @onready var food_stack_base = $FoodStackBase
 @onready var finished_recipe_base = $FinishedRecipeBase
+@onready var recipe_finish_particles = $RecipeFinishParticles
 
 var ingredients: Array[FoodItem] = []
 var dirty: bool = false: set = _set_dirty
@@ -24,7 +25,7 @@ func take_food_item_from_player(player: Player):
 		return
 	# TODO: Check if we can even receive this ingredient:
 	# Does a valid recipe exist containing everything we have AND this new item?
-	if receive_food_item(item):
+	if await receive_food_item(item):
 		player.currently_held_item = null
 
 
@@ -45,19 +46,23 @@ func receive_food_item(food_item: FoodItem) -> bool:
 	if not RecipeManager.is_partial_recipe(food_types):
 		return false
 	
+	var completed_recipe = RecipeManager.get_recipe(food_types)
+	# Do this check *before* the item is moved
+	if completed_recipe == null:
+		_uncomplete_recipe()
+	
 	ingredients.append(food_item)
 	food_item.reparent(food_stack_base)
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(food_item, "position", Vector3.UP * 0.06 * (len(ingredients) - 1), ITEM_PICKUP_TIME)
 	tween.tween_property(food_item, "rotation", Vector3.ZERO, ITEM_PICKUP_TIME)
+	await tween.finished
 	
-	var completed_recipe = RecipeManager.get_recipe(food_types)
+	# Do this check *after* the item is moved
 	if completed_recipe != null:
 		print("Completed recipe! %s" % completed_recipe)
 		_complete_recipe(completed_recipe)
-	else:
-		_uncomplete_recipe()
-	
+
 	return true
 
 
@@ -82,17 +87,18 @@ func _complete_recipe(recipe: Recipe):
 func _uncomplete_recipe():
 	# It is possible we go from "finished" to "unfinished" while makign complex recipes.
 	# So, we need to "un-finish" and reset that state.
+	if held_recipe != null:
+		_smoke_puff()
+	
 	held_recipe = null
 	
 	# Destroy any previously finished recipe
 	for child in finished_recipe_base.get_children():
 		child.queue_free()
 	
-	_smoke_puff()
-	
 	# Show all the ingredients by hiding their common root
 	food_stack_base.visible = true
 
 
 func _smoke_puff():
-	pass
+	recipe_finish_particles.emitting = true
