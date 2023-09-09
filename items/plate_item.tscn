@@ -49,6 +49,7 @@ shape = SubResource("SphereShape3D_8who7")
 
 [node name="MeshRoot" type="Node3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+visible = false
 
 [node name="Plate" parent="MeshRoot" instance=ExtResource("2_x4xmc")]
 
@@ -70,6 +71,6 @@ emitting = false
 amount = 30
 one_shot = true
 explosiveness = 0.8
-visibility_aabb = AABB(-0.398932, -0.350604, -0.408839, 0.834513, 0.693431, 0.760097)
+visibility_aabb = AABB(-0.433241, -0.541993, -0.386726, 0.823628, 1.05117, 0.67921)
 process_material = SubResource("ParticleProcessMaterial_owt0n")
 draw_pass_1 = SubResource("BoxMesh_3vf82")
