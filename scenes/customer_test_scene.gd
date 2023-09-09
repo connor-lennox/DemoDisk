@@ -7,6 +7,10 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for i in range(1, 4):
+		await get_tree().create_timer(2).timeout
+		customer_manager.spawn_customer()
+	
 	while true:
 		customer1.move_to_position(Vector3.FORWARD * -5)
 		await customer1.finished_moving

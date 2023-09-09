@@ -17,12 +17,6 @@ var active_customer: Customer = null
 var customers: Array[Customer] = []
 
 
-func _ready():
-	for i in range(1, 4):
-		await get_tree().create_timer(2).timeout
-		spawn_customer()
-
-
 func spawn_customer():
 	var new_customer: Customer = customer_scene.instantiate() as Customer
 	new_customer.order = _construct_order()
