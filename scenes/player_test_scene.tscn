@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7rxaeagsmc6v"]
+[gd_scene load_steps=21 format=3 uid="uid://b7rxaeagsmc6v"]
 
 [ext_resource type="Script" path="res://scenes/player_test_scene.gd" id="1_2ytob"]
 [ext_resource type="PackedScene" uid="uid://vi5ydb7g6j2x" path="res://nodes/player/player.tscn" id="1_ffqlx"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://ctf15b2ggcsm1" path="res://items/resources/burger_patty_raw_item.tres" id="12_ie5j2"]
 [ext_resource type="Resource" uid="uid://b64621o3jjgor" path="res://items/resources/burger_bread_item.tres" id="13_uqn7k"]
 [ext_resource type="Resource" uid="uid://bi80xqad2yft1" path="res://items/resources/cheese_item.tres" id="14_b4i66"]
+[ext_resource type="PackedScene" uid="uid://l10saewclqn1" path="res://nodes/objects/trashcan/trashcan.tscn" id="15_xny0n"]
 [ext_resource type="PackedScene" uid="uid://03f307g5cj2y" path="res://nodes/customers/customer.tscn" id="16_6lf8e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mx8i0"]
@@ -111,6 +112,9 @@ script = ExtResource("2_y0fa2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109656, 2.11379, 1.38858)
 
 [node name="CuttingBoard" parent="Station3" instance=ExtResource("10_rsu6p")]
+
+[node name="Trashcan" parent="Station3" instance=ExtResource("15_xny0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.19209e-07)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.405173, 0.91424, 0, -0.91424, -0.405173, 0, 2.55651, 0)
