@@ -5,6 +5,7 @@ const TIME_TO_MOVE = 0.5
 @onready var tutorial_points = $TutorialPoints.get_children()
 @onready var tutorial_cam = $TutorialCam
 @onready var tutorial_text: Label = $"%TutorialText"
+@onready var swish_audio = $SwishAudio
 
 var point_idx = 0
 var moving = false
@@ -36,6 +37,8 @@ func _set_tutorial_point(idx: int):
 	var target = tutorial_points[point_idx]
 	target.enter()
 	tutorial_text.text = target.description
+	
+	swish_audio.play()
 	
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(tutorial_cam, "global_position", target.global_position, TIME_TO_MOVE)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp2qbthk8urx2"]
+[gd_scene load_steps=7 format=3 uid="uid://cp2qbthk8urx2"]
 
 [ext_resource type="PackedScene" uid="uid://bc7fw6ecvwcv6" path="res://scenes/restaurant.tscn" id="1_ed4hd"]
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_scene.gd" id="1_lt0ct"]
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial_point.gd" id="2_25uqi"]
 [ext_resource type="StyleBox" uid="uid://cl0ts27mjapj1" path="res://scenes/tutorial/tutorial_text_box.tres" id="4_r5avi"]
 [ext_resource type="PackedScene" uid="uid://03f307g5cj2y" path="res://nodes/customers/customer.tscn" id="5_qrxt3"]
+[ext_resource type="AudioStream" uid="uid://4ula6jb1q52f" path="res://assets/sounds/move_swish.ogg" id="6_q8ir5"]
 
 [node name="TutorialScene" type="Node3D"]
 script = ExtResource("1_lt0ct")
@@ -45,7 +46,7 @@ script = ExtResource("2_25uqi")
 description = "Get out there and start flipping some burgers!"
 
 [node name="TutorialCam" type="Camera3D" parent="."]
-transform = Transform3D(-0.952939, 0.0981888, -0.286821, 0, 0.946097, 0.323882, 0.303162, 0.30864, -0.901573, -1.47269, 6.28181, -5.60166)
+transform = Transform3D(-0.714509, 0.197509, -0.671168, 0, 0.959324, 0.282306, 0.699626, 0.201711, -0.685446, -3.63945, 2.42401, -0.67098)
 current = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -69,5 +70,9 @@ autowrap_mode = 2
 
 [node name="Customer" parent="." instance=ExtResource("5_qrxt3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
+
+[node name="SwishAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_q8ir5")
+pitch_scale = 0.8
 
 [editable path="Restaurant"]

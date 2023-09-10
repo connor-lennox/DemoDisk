@@ -21,17 +21,28 @@ theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Play"
 
+[node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+disabled = true
+text = "Level Select"
+
 [node name="TutorialButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "Tutorial"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Exit"
 
 [node name="Restaurant" parent="." instance=ExtResource("2_a70bl")]
 
@@ -55,3 +66,4 @@ transform = Transform3D(-0.932362, 0, -0.361527, 0, 1, 0, 0.361527, 0, -0.932362
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_start_game"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TutorialButton" to="." method="_start_tutorial"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_exit_game"]
