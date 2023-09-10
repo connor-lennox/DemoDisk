@@ -11,6 +11,7 @@ var moving = false
 
 
 func _ready():
+	Bgm.play_title_music()
 	_set_tutorial_point(0)
 
 func _process(_delta):
@@ -22,7 +23,7 @@ func _progress_tutorial():
 	if point_idx < len(tutorial_points) - 1:
 		_set_tutorial_point(point_idx + 1)
 	else:
-		print("Tutorial over!")
+		SceneManager.switch_to_title()
 
 
 func _set_tutorial_point(idx: int):

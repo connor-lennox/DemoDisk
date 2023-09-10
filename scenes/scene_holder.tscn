@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://om27f12nigas"]
+
+[ext_resource type="Script" path="res://scenes/scene_holder.gd" id="1_0crbp"]
+[ext_resource type="PackedScene" uid="uid://pojmf4m23i0" path="res://addons/fade_transition/fade_transition.tscn" id="2_5dlkd"]
+
+[node name="SceneHolder" type="Node"]
+script = ExtResource("1_0crbp")
+
+[node name="SceneRoot" type="Node" parent="."]
+
+[node name="FadeTransition" parent="." instance=ExtResource("2_5dlkd")]
+z_index = 100
+default_cover_duration = 1.0
+default_uncover_duration = 1.0
+initially_covering = true
+cover_transition = 4
+uncover_transition = 4
