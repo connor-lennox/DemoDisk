@@ -48,9 +48,8 @@ func receive_food_item(food_item: FoodItem) -> bool:
 	
 	var completed_recipe = RecipeManager.get_recipe(food_types)
 	# Do this check *before* the item is moved
-	if completed_recipe == null:
-		_uncomplete_recipe()
-	
+	_uncomplete_recipe()
+
 	ingredients.append(food_item)
 	food_item.reparent(food_stack_base)
 	var tween = get_tree().create_tween().set_parallel()
