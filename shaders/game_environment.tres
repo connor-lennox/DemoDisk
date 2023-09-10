@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ds1lha3ksi3cf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mx8i0"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ewqot"]
+sky_material = SubResource("ProceduralSkyMaterial_mx8i0")
+
+[resource]
+sky = SubResource("Sky_ewqot")
+ambient_light_source = 2
+ambient_light_color = Color(0.423529, 0.423529, 0.423529, 1)
+tonemap_mode = 2
+fog_light_energy = 2.14
+fog_density = 0.0107

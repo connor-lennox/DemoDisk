@@ -7,7 +7,7 @@ var current_track = ""
 
 
 func _ready():
-	volume_db = -5
+	volume_db = -7
 
 
 func play_title_music():
