@@ -6,10 +6,10 @@ const BACK_OF_LINE = 10
 const WALK_FORWARD_DELAY = 1
 
 var entrees = [
-		preload("res://items/resources/burger_cheese_item.tres"), 
-		preload("res://items/resources/burger_deluxe_item.tres"), 
-		preload("res://items/resources/burger_plain_item.tres")
-	]
+	preload("res://nodes/customers/order_items/burger_cheese_order_item.tres"), 
+	preload("res://nodes/customers/order_items/burger_deluxe_order_item.tres"), 
+	preload("res://nodes/customers/order_items/burger_plain_order_item.tres")
+]
 
 var customer_scene = preload("res://nodes/customers/customer.tscn")
 

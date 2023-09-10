@@ -49,7 +49,6 @@ shape = SubResource("SphereShape3D_8who7")
 
 [node name="MeshRoot" type="Node3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-visible = false
 
 [node name="Plate" parent="MeshRoot" instance=ExtResource("2_x4xmc")]
 

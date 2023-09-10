@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OrderItem" load_steps=4 format=3 uid="uid://c5jojyrh5umbc"]
+
+[ext_resource type="Resource" uid="uid://jwvaebva0p7y" path="res://items/resources/burger_plain_item.tres" id="1_2nj3j"]
+[ext_resource type="Script" path="res://nodes/customers/order_item.gd" id="2_1dube"]
+[ext_resource type="AudioStream" uid="uid://cyfy168w3cvcn" path="res://assets/sounds/voicelines/hamburger.wav" id="3_8oncf"]
+
+[resource]
+script = ExtResource("2_1dube")
+food_item = ExtResource("1_2nj3j")
+voice_line = ExtResource("3_8oncf")
