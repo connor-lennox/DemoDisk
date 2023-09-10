@@ -7,6 +7,7 @@ var recipes: Array[Recipe] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for res in DirAccess.get_files_at(recipe_location):
+		res = res.replace(".remap", "")
 		recipes.append(load(recipe_location + "/" + res))
 
 
