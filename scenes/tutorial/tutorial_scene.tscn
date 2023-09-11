@@ -15,30 +15,30 @@ script = ExtResource("1_lt0ct")
 [node name="TutorialPoints" type="Node3D" parent="."]
 
 [node name="Point0" type="Node3D" parent="TutorialPoints"]
-transform = Transform3D(-0.810064, 0.347928, -0.471956, 0, 0.804916, 0.593388, 0.586342, 0.480682, -0.652034, -2.9696, 3.93211, -0.689738)
+transform = Transform3D(-0.87759, 0.203729, -0.433971, 0, 0.905213, 0.424956, 0.479412, 0.372938, -0.794406, -3.08127, 3.53951, -1.36506)
 script = ExtResource("2_25uqi")
 description = "Welcome to your new place of employment, human! Click to progress the tutorial."
 
 [node name="Point1" type="Node3D" parent="TutorialPoints"]
 transform = Transform3D(0.807967, 0.302574, -0.505606, 0, 0.858084, 0.513509, 0.589227, -0.414899, 0.693304, -2.28493, 2.46044, 3.49654)
 script = ExtResource("2_25uqi")
-description = "The service station is where you will take customer's orders and provide them sustenance. It also has ample counter space."
+description = "The service station is where you will take customer's orders and provide them sustenance. Interact with customers to take their order."
 
 [node name="Point2" type="Node3D" parent="TutorialPoints"]
 transform = Transform3D(-0.546138, 0.479258, -0.687055, 0, 0.820173, 0.572115, 0.837695, 0.312454, -0.447928, 0.984165, 2.70677, 1.92058)
 script = ExtResource("2_25uqi")
-description = "The sink is used to wash dishes, and the chopping board to cut food items."
+description = "The sink is used to wash dishes, and the chopping board to cut food items. These tasks require you to stay at the station while they are being completed."
 
 [node name="Point3" type="Node3D" parent="TutorialPoints" node_paths=PackedStringArray("station")]
 transform = Transform3D(-0.988748, -0.0302011, 0.146506, 0, 0.979407, 0.201897, -0.149587, 0.199625, -0.968387, 0.354971, 2.20747, 3.03677)
 script = ExtResource("2_25uqi")
-description = "The fridge contains your necessary ingredients, and the trash can is used to dispose of your inevitable mistakes."
+description = "The fridge contains your necessary ingredients, and the trash can is used to dispose of your inevitable mistakes. Don't worry, the fridge is fully stocked."
 station = NodePath("../../Restaurant/Stations/FridgeStation")
 
 [node name="Point4" type="Node3D" parent="TutorialPoints"]
 transform = Transform3D(-0.34444, -0.439266, 0.829703, 0, 0.883783, 0.467897, -0.938808, 0.161163, -0.304411, -0.875909, 2.16725, 2.21097)
 script = ExtResource("2_25uqi")
-description = "The stove can cook meat to make it ready for consumption. Be careful - it's hot!"
+description = "The stove can cook meat to make it ready for consumption. Be careful - it's hot! Food will burn if left on the stove for too long."
 
 [node name="Point5" type="Node3D" parent="TutorialPoints"]
 transform = Transform3D(1, 0, 0, 0, 0.983571, 0.180519, 0, -0.180519, 0.983571, 0, 2.868, 3.53)
