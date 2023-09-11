@@ -148,7 +148,7 @@ func _complete_order():
 
 func _say_order():
 	await _play_dialog_line(greeting_line)
-	if len(order.requirements) == 0:
+	if len(order.requirements) == 1:
 		# If there's only one order item, just say what it is
 		await _play_dialog_line(order.requirements[0].voice_line)
 	else:
