@@ -8,6 +8,7 @@ const PLATE_RETURN_TIME = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Bgm.play_game_music()
 	customer_manager.spawn_customer()
 	customer_manager.spawn_customer()
 
