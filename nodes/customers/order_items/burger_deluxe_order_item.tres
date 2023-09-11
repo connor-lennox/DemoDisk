@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="OrderItem" load_steps=4 format=3 uid="uid://cowjdvxx2b72c"]
+[gd_resource type="Resource" script_class="OrderItem" load_steps=5 format=3 uid="uid://cowjdvxx2b72c"]
 
 [ext_resource type="Resource" uid="uid://bk6tvxdtrq8tj" path="res://items/resources/burger_deluxe_item.tres" id="1_l0bxd"]
 [ext_resource type="Script" path="res://nodes/customers/order_item.gd" id="1_ysjd8"]
+[ext_resource type="Texture2D" uid="uid://b5d2c8ygosjxe" path="res://assets/icons/burger_deluxe_ds.png" id="2_xhhi0"]
 [ext_resource type="AudioStream" uid="uid://dqlmmwphnpg3x" path="res://assets/sounds/voicelines/deluxe_burger.wav" id="3_qyceo"]
 
 [resource]
 script = ExtResource("1_ysjd8")
 food_item = ExtResource("1_l0bxd")
 voice_line = ExtResource("3_qyceo")
+icon = ExtResource("2_xhhi0")

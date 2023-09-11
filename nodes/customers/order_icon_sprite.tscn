@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bxaw4v5mhq0pr"]
+
+[node name="OrderIconSprite" type="Sprite3D"]
+billboard = 1

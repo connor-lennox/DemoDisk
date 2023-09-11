@@ -1,6 +1,8 @@
 class_name Customer
 extends Area3D
 
+const ORDER_ICON_SPRITE_SCENE = preload("res://nodes/customers/order_icon_sprite.tscn")
+
 const MECH_MODELS = [
 	"res://assets/mechs/George.gltf", "res://assets/mechs/Leela.gltf", "res://assets/mechs/Mike.gltf", "res://assets/mechs/Stan.gltf"
 ]
@@ -30,12 +32,16 @@ signal order_satisfied
 @onready var character_root: Node3D = $CharacterRoot
 @onready var item_receiver: Node3D = $ItemReceiver
 @onready var dialog_player = $DialogPlayer
+@onready var order_root = $OrderRoot
 
 var mech: Node3D
 var mech_animator: AnimationPlayer
 
 var greeting_line: AudioStream
 var leaving_line: AudioStream
+
+var speaking: bool = false
+var gave_order: bool = false
 
 var order: Order
 var received_items: Array[FoodItemType]
@@ -93,27 +99,35 @@ func interact(player: Player):
 	if not interactable:
 		return
 	
+	# If we haven't told our order yet, do that regardless
+	if not gave_order:
+		_say_order()
+		return
+	
 	if player.currently_held_item is PlateItem:
 		var plate_recipe = player.currently_held_item.held_recipe
-		if plate_recipe in order.required_food_items() and not plate_recipe in received_items: 
-			await _take_item_from_player(player)
-			received_items.append(plate_recipe)
-			if _check_requirements_satisfied():
-				_complete_order()
+		if await _try_take(player, plate_recipe):
 			return
 	
 	if player.currently_held_item is FoodItem:
 		var food_item = player.currently_held_item.food_type
-		if food_item in order.required_food_items() and not food_item in received_items:
-			await _take_item_from_player(player)
-			received_items.append(food_item)
-			if _check_requirements_satisfied():
-				_complete_order()
+		if await _try_take(player, food_item):
 			return
 	
 	# If the player isn't holding anything, tell them our order instead
 	if player.currently_held_item == null:
 		_say_order()
+		return
+
+func _try_take(player: Player, food_item: FoodItemType) -> bool:
+	if food_item in order.required_food_items() and not food_item in received_items: 
+		await _take_item_from_player(player)
+		received_items.append(food_item)
+		_refresh_order_icons()
+		if _check_requirements_satisfied():
+			_complete_order()
+		return true
+	return false
 
 
 func move_to_position(target: Vector3):
@@ -143,23 +157,59 @@ func _check_requirements_satisfied():
 
 func _complete_order():
 	_play_dialog_line(leaving_line)
+	_clear_order_icons()
 	order_satisfied.emit()
 
 
 func _say_order():
+	if speaking:
+		return
+	
+	speaking = true
 	await _play_dialog_line(greeting_line)
 	if len(order.requirements) == 1:
 		# If there's only one order item, just say what it is
 		await _play_dialog_line(order.requirements[0].voice_line)
+		if not gave_order:
+			_add_order_icon(order.requirements[0].icon)
 	else:
 		# For multiple items, we order as "...X, Y, and a Z"
 		for order_item in order.requirements.slice(0, -1):
 			await _play_dialog_line(order_item.voice_line)
+			if not gave_order:
+				_add_order_icon(order_item.icon)
 		await _play_dialog_line(AND_A_VOICE_LINE)
 		await _play_dialog_line(order.requirements[-1].voice_line)
+		if not gave_order:
+			_add_order_icon(order.requirements[-1].icon)
+	
+	speaking = false
+	gave_order = true
 
 
 func _play_dialog_line(line: AudioStream):
 	dialog_player.stream = line
 	dialog_player.play()
 	await dialog_player.finished
+
+
+func _add_order_icon(icon: Texture, idx=-1):
+	# idx -1 is an indicator that we need to infer the position
+	var sprite = ORDER_ICON_SPRITE_SCENE.instantiate()
+	sprite.texture = icon
+	order_root.add_child(sprite)
+	if idx == -1:
+		idx = len(order_root.get_children()) - 1
+	sprite.position = Vector3.DOWN * idx * 0.5
+
+func _clear_order_icons():
+	for child in order_root.get_children():
+		child.queue_free()
+
+func _refresh_order_icons():
+	_clear_order_icons()
+	var idx = 0
+	for requirement in order.requirements:
+		if requirement.food_item not in received_items:
+			_add_order_icon(requirement.icon, idx)
+			idx += 1
