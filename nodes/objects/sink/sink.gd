@@ -94,7 +94,6 @@ func generate_clean_plate():
 	new_plate.global_rotation = Vector3.ZERO
 	new_plate.call_deferred("set", "dirty", false)
 	new_plate.call_deferred("set", "interactable", false)
-	new_plate.put_down()
 
 
 func _start_cleaning():
