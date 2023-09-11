@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxpdqi3bewbc"]
+
+[ext_resource type="Script" path="res://nodes/objects/food_spawner/food_spawner.gd" id="1_1uduv"]
+[ext_resource type="PackedScene" uid="uid://blrqq62e6beom" path="res://assets/restaurant/Environment_CanFridge.glb" id="1_ip8if"]
+[ext_resource type="Resource" uid="uid://drti873sc4pap" path="res://items/resources/soda_item.tres" id="2_84gnc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5o4d"]
+size = Vector3(2, 3, 0.5)
+
+[node name="DrinkCooler" type="Area3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_1uduv")
+food_type = ExtResource("2_84gnc")
+
+[node name="Environment_CanFridge" parent="." instance=ExtResource("1_ip8if")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.41946, 0)
+shape = SubResource("BoxShape3D_o5o4d")
+
+[node name="MeshParent" type="Node3D" parent="."]
+
+[node name="ChildPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184755, 2.08911, 0)

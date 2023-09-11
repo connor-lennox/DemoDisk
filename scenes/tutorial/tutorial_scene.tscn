@@ -38,7 +38,7 @@ station = NodePath("../../Restaurant/Stations/FridgeStation")
 [node name="Point4" type="Node3D" parent="TutorialPoints"]
 transform = Transform3D(-0.34444, -0.439266, 0.829703, 0, 0.883783, 0.467897, -0.938808, 0.161163, -0.304411, -0.875909, 2.16725, 2.21097)
 script = ExtResource("2_25uqi")
-description = "The stove can cook meat to make it ready for consumption. Be careful - it's hot! Food will burn if left on the stove for too long."
+description = "The stove can cook meat to make it ready for consumption. Be careful - it's hot! Food will burn if left on the stove for too long. The drink cooler to the left contains sodas."
 
 [node name="Point5" type="Node3D" parent="TutorialPoints"]
 transform = Transform3D(1, 0, 0, 0, 0.983571, 0.180519, 0, -0.180519, 0.983571, 0, 2.868, 3.53)

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FoodItemType" load_steps=3 format=3 uid="uid://drti873sc4pap"]
+
+[ext_resource type="Script" path="res://items/food_item_type.gd" id="1_58wt7"]
+[ext_resource type="PackedScene" uid="uid://c12nuhkc3mx3p" path="res://assets/food/Soda_Can.glb" id="1_f7540"]
+
+[resource]
+script = ExtResource("1_58wt7")
+mesh = ExtResource("1_f7540")

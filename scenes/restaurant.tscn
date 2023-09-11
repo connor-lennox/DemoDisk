@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bc7fw6ecvwcv6"]
+[gd_scene load_steps=20 format=3 uid="uid://bc7fw6ecvwcv6"]
 
 [ext_resource type="PackedScene" uid="uid://cmu31f6bsdcwm" path="res://assets/restaurant/Floor_Kitchen1.gltf" id="1_2ddkf"]
 [ext_resource type="PackedScene" uid="uid://dkwyfpiptj64l" path="res://nodes/objects/counter/counter.tscn" id="2_7gbyc"]
@@ -17,6 +17,7 @@
 [ext_resource type="Environment" uid="uid://ds1lha3ksi3cf" path="res://shaders/game_environment.tres" id="12_hp55t"]
 [ext_resource type="Resource" uid="uid://xk3nfpmssm3o" path="res://items/resources/tomato_whole_item.tres" id="12_rmg2e"]
 [ext_resource type="PackedScene" uid="uid://dkag0fx78j7m8" path="res://assets/restaurant/table.glb" id="13_450xy"]
+[ext_resource type="PackedScene" uid="uid://cxpdqi3bewbc" path="res://nodes/objects/drink_cooler/drink_cooler.tscn" id="14_j5to8"]
 [ext_resource type="PackedScene" uid="uid://jpvw3qljccly" path="res://assets/restaurant/diner_midwall.glb" id="15_v5el7"]
 
 [node name="Restaurant" type="Node3D"]
@@ -99,10 +100,10 @@ script = ExtResource("3_7pihg")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.314268, 2.1, 0)
 
 [node name="Oven" parent="Stations/OvenStation" instance=ExtResource("5_w7kgg")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -0.360162)
 
-[node name="Counter3" parent="Stations/OvenStation" instance=ExtResource("2_7gbyc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -0.5)
+[node name="DrinkCooler" parent="Stations/OvenStation" instance=ExtResource("14_j5to8")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -0.993086, 0, 1.18384)
 
 [node name="FridgeStation" type="Node3D" parent="Stations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
@@ -135,7 +136,7 @@ transform = Transform3D(-0.942566, 0, -0.334021, 0, 1, 0, 0.334021, 0, -0.942566
 food_type = ExtResource("12_rmg2e")
 
 [node name="Trashcan" parent="Stations/FridgeStation" instance=ExtResource("10_tb47y")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 1.07976, 0, 1.32632)
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 1.12174, 0, 1.30363)
 
 [node name="SinkStation" type="Node3D" parent="Stations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)

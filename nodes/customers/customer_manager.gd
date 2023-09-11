@@ -13,6 +13,10 @@ var entrees = [
 	preload("res://nodes/customers/order_items/burger_plain_order_item.tres")
 ]
 
+var addons = [
+	preload("res://nodes/customers/order_items/drink_order_item.tres")
+]
+
 var customer_scene = preload("res://nodes/customers/customer.tscn")
 
 var active_customer: Customer = null
@@ -71,4 +75,8 @@ func _set_active_customer(customer: Customer):
 	customer.order_satisfied.connect(pop_customer)
 
 func _construct_order() -> Order:
-	return Order.new([entrees.pick_random()])
+	var items: Array[OrderItem] = [entrees.pick_random()]
+	for addon in addons:
+		if randf() > 0.5:
+			items.append(addon)
+	return Order.new(items)

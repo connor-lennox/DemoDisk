@@ -33,3 +33,5 @@ transform = Transform3D(0.981567, -0.182861, -0.0555678, 0.191117, 0.939162, 0.2
 
 [node name="MeshSpawn5" type="Node3D" parent="MeshParent"]
 transform = Transform3D(0.985331, -0.164652, 0.0448708, 0.170657, 0.950662, -0.259073, -3.72529e-09, 0.26293, 0.964815, -0.403515, 0.130865, 0.334694)
+
+[node name="ChildPosition" type="Node3D" parent="."]

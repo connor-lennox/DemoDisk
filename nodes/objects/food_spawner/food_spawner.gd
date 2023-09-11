@@ -5,6 +5,7 @@ extends Node3D
 @export var food_type: FoodItemType
 
 @onready var mesh_spawns: Array[Node] = $MeshParent.get_children()
+@onready var child_position: Node3D = $ChildPosition
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,5 +18,5 @@ func interact(player: Player):
 	if player.currently_held_item == null:
 		var food_item: FoodItem = food_item_scene.instantiate() as FoodItem
 		food_item.call_deferred("_set_food_type", food_type)
-		add_child(food_item)
+		child_position.add_child(food_item)
 		await food_item.get_picked_up_by(player)

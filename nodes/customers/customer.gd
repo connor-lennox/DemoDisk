@@ -17,6 +17,8 @@ const LEAVINGS = [
 	preload("res://assets/sounds/voicelines/thank_you.wav")
 ]
 
+const AND_A_VOICE_LINE = preload("res://assets/sounds/voicelines/and_a.wav")
+
 const WALK_SPEED = 2.5
 const ROTATION_SPEED = 2
 
@@ -146,8 +148,15 @@ func _complete_order():
 
 func _say_order():
 	await _play_dialog_line(greeting_line)
-	for order_item in order.requirements:
-		await _play_dialog_line(order_item.voice_line)
+	if len(order.requirements) == 0:
+		# If there's only one order item, just say what it is
+		await _play_dialog_line(order.requirements[0].voice_line)
+	else:
+		# For multiple items, we order as "...X, Y, and a Z"
+		for order_item in order.requirements.slice(0, -1):
+			await _play_dialog_line(order_item.voice_line)
+		await _play_dialog_line(AND_A_VOICE_LINE)
+		await _play_dialog_line(order.requirements[-1].voice_line)
 
 
 func _play_dialog_line(line: AudioStream):
