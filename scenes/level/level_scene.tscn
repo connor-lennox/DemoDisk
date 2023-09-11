@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgs68t5c8jjj0"]
+
+[ext_resource type="Script" path="res://scenes/level/level_scene.gd" id="1_4sww3"]
+[ext_resource type="PackedScene" uid="uid://bc7fw6ecvwcv6" path="res://scenes/restaurant.tscn" id="1_o5324"]
+[ext_resource type="PackedScene" uid="uid://vi5ydb7g6j2x" path="res://nodes/player/player.tscn" id="2_7h5sr"]
+[ext_resource type="PackedScene" uid="uid://dswwd02hmgwf" path="res://ui/player_crosshair.tscn" id="3_ejqch"]
+[ext_resource type="Script" path="res://nodes/customers/customer_manager.gd" id="4_2v1mk"]
+[ext_resource type="PackedScene" uid="uid://duxcdv8q4kaw" path="res://items/plate_item.tscn" id="6_kgxja"]
+
+[node name="level_scene" type="Node3D"]
+script = ExtResource("1_4sww3")
+
+[node name="Restaurant" parent="." instance=ExtResource("1_o5324")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("stations") instance=ExtResource("2_7h5sr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49219, 2.84348)
+stations = [NodePath("../Restaurant/Stations/ServeStation"), NodePath("../Restaurant/Stations/SinkStation"), NodePath("../Restaurant/Stations/FridgeStation"), NodePath("../Restaurant/Stations/OvenStation")]
+camera_x_limit = 40
+
+[node name="PlayerCrosshair" parent="." instance=ExtResource("3_ejqch")]
+
+[node name="CustomerManager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+script = ExtResource("4_2v1mk")
+
+[node name="PlateItem" parent="." instance=ExtResource("6_kgxja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8572, 1.11035)

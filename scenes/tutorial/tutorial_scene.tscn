@@ -30,7 +30,7 @@ script = ExtResource("2_25uqi")
 description = "The sink is used to wash dishes, and the chopping board to cut food items."
 
 [node name="Point3" type="Node3D" parent="TutorialPoints" node_paths=PackedStringArray("station")]
-transform = Transform3D(-0.98875, -0.0861093, 0.122304, 0, 0.817669, 0.575688, -0.149576, 0.569212, -0.808471, 0.00781, 2.57879, 2.79274)
+transform = Transform3D(-0.988748, -0.0302011, 0.146506, 0, 0.979407, 0.201897, -0.149587, 0.199625, -0.968387, 0.354971, 2.20747, 3.03677)
 script = ExtResource("2_25uqi")
 description = "The fridge contains your necessary ingredients, and the trash can is used to dispose of your inevitable mistakes."
 station = NodePath("../../Restaurant/Stations/FridgeStation")
