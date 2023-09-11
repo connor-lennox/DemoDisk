@@ -96,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
 script = ExtResource("3_7pihg")
 
 [node name="PlayerPosition" type="Node3D" parent="Stations/OvenStation"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.185565, 2.1, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.314268, 2.1, 0)
 
 [node name="Oven" parent="Stations/OvenStation" instance=ExtResource("5_w7kgg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0.5)
@@ -142,7 +142,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
 script = ExtResource("3_7pihg")
 
 [node name="PlayerPosition" type="Node3D" parent="Stations/SinkStation"]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 2.1, 0)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -0.38939, 2.1, 0)
 
 [node name="CuttingBoard" parent="Stations/SinkStation" instance=ExtResource("4_vsbeb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0.5)

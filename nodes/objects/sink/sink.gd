@@ -5,6 +5,10 @@ const ITEM_PICKUP_TIME = 0.25
 const MAX_PLATES = 3
 const CLEAN_TIME = 2
 
+var plate_scene = preload("res://items/plate_item.tscn")
+
+@export var starting_plates = 3
+
 @onready var faucet_particles = $FaucetParticles
 @onready var splash_particles = $SplashParticles
 @onready var faucet_sound = $FaucetSound
@@ -17,6 +21,10 @@ var clean_plates: Array[PlateItem] = []
 
 var cleaning: bool = false
 var clean_timer: float = 0
+
+func _ready():
+	for i in range(starting_plates):
+		generate_clean_plate()
 
 func _process(delta):
 	if not cleaning:
@@ -44,14 +52,15 @@ func station_deactivated():
 func interact(player: Player):
 	if player.currently_held_item == null:
 		# Try and take things out of the sink, or wash things if they're dirty
-		if len(dirty_plates) > 0 and not cleaning:
-			print("%s started washing the items in %s" % [player, self])
-			_start_cleaning()
-			return true
-		
 		# If there are clean plates, we can take one out instead
 		if len(clean_plates) > 0:
 			await _give_item_to_player(player)
+			return true
+		
+		# If not, start cleaning
+		if len(dirty_plates) > 0 and not cleaning:
+			print("%s started washing the items in %s" % [player, self])
+			_start_cleaning()
 			return true
 	else:
 		# Try and put a dirty plate into the sink
@@ -60,6 +69,32 @@ func interact(player: Player):
 			return true
 	
 	return false
+
+
+## Used to generate a dirty plate, for when one is "returned" by a customer
+func generate_dirty_plate():
+	if len(dirty_plates) < MAX_PLATES:
+		var new_plate = plate_scene.instantiate()
+		dirty_plates.append(new_plate)
+		add_child(new_plate)
+		var holder = dirty_plate_holders[len(dirty_plates) - 1]
+		new_plate.global_position = holder.global_position
+		new_plate.global_rotation = holder.global_rotation
+		new_plate.call_deferred("set", "dirty", true)
+		new_plate.call_deferred("set", "interactable", false)
+		new_plate.put_down()
+
+
+## Used to generate a clean plate, for setup
+func generate_clean_plate():
+	var new_plate = plate_scene.instantiate()
+	clean_plates.append(new_plate)
+	add_child(new_plate)
+	new_plate.global_position = clean_plate_holder.global_position + Vector3.UP * 0.05 * (len(clean_plates)-1)
+	new_plate.global_rotation = Vector3.ZERO
+	new_plate.call_deferred("set", "dirty", false)
+	new_plate.call_deferred("set", "interactable", false)
+	new_plate.put_down()
 
 
 func _start_cleaning():
