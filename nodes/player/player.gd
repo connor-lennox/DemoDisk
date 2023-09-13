@@ -39,6 +39,10 @@ func _process(_delta):
 		move_to_station((current_station + 1) % len(stations))
 	if Input.is_action_just_pressed("ui_left"):
 		move_to_station(current_station - 1 if current_station > 0 else len(stations) - 1)
+	
+	# Input of "down" moves you two, which is a 180 degree turn with 4 stations
+	if Input.is_action_just_pressed("ui_down"):
+		move_to_station(current_station - 2 if current_station > 1 else len(stations) - (2 - current_station))
 	if Input.is_action_just_pressed("interact") and not interacting:
 		try_interact()
 
