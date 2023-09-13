@@ -67,6 +67,10 @@ func interact(player: Player):
 		if player.currently_held_item is PlateItem and player.currently_held_item.dirty == true and len(dirty_plates) < MAX_PLATES:
 			await _take_item_from_player(player)
 			return true
+		# Take a clean plate back from the player (prevents softlock when out of counter space)
+		elif player.currently_held_item is PlateItem and player.currently_held_item.dirty == false:
+			await _take_clean_plate_from_player(player)
+			return true
 	
 	return false
 
@@ -145,5 +149,17 @@ func _take_item_from_player(player: Player):
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(item, "global_position", holder.global_position, ITEM_PICKUP_TIME)
 	tween.tween_property(item, "global_rotation", holder.global_rotation, ITEM_PICKUP_TIME)
+	await tween.finished
+	item.put_down()
+
+func _take_clean_plate_from_player(player: Player):
+	var item = player.currently_held_item
+	player.currently_held_item = null
+	item.reparent(self)
+	clean_plates.append(item)
+	var position = clean_plate_holder.global_position + Vector3.UP * 0.05 * (len(clean_plates)-1)
+	var tween = get_tree().create_tween().set_parallel()
+	tween.tween_property(item, "global_position", position, ITEM_PICKUP_TIME)
+	tween.tween_property(item, "global_rotation", Vector3.ZERO, ITEM_PICKUP_TIME)
 	await tween.finished
 	item.put_down()
