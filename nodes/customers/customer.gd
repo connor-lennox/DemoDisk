@@ -200,7 +200,7 @@ func _add_order_icon(icon: Texture, idx=-1):
 	order_root.add_child(sprite)
 	if idx == -1:
 		idx = len(order_root.get_children()) - 1
-	sprite.position = Vector3.DOWN * idx * 0.5
+	sprite.position = Vector3.RIGHT * idx * 0.5
 
 func _clear_order_icons():
 	for child in order_root.get_children():
