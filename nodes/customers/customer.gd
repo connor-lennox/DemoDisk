@@ -157,6 +157,7 @@ func _check_requirements_satisfied():
 
 func _complete_order():
 	_play_dialog_line(leaving_line)
+	interactable = false
 	_clear_order_icons()
 	order_satisfied.emit()
 
@@ -188,6 +189,9 @@ func _say_order():
 
 
 func _play_dialog_line(line: AudioStream):
+	# This prevents us from speaking after our order is completed
+	if not interactable:
+		return
 	dialog_player.stream = line
 	dialog_player.play()
 	await dialog_player.finished
