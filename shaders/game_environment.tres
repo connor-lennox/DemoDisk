@@ -16,3 +16,4 @@ fog_density = 0.05
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.619608, 1, 1, 1)
+volumetric_fog_temporal_reprojection_enabled = false
