@@ -12,3 +12,6 @@ func switch_to_game():
 
 func switch_to_tutorial():
 	_switch_to_scene("res://scenes/tutorial/tutorial_scene.tscn")
+
+func switch_to_game_over():
+	_switch_to_scene("res://scenes/game_over/game_over_scene.tscn")

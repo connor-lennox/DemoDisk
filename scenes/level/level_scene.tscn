@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgs68t5c8jjj0"]
+[gd_scene load_steps=7 format=3 uid="uid://dgs68t5c8jjj0"]
 
 [ext_resource type="Script" path="res://scenes/level/level_scene.gd" id="1_4sww3"]
 [ext_resource type="PackedScene" uid="uid://bc7fw6ecvwcv6" path="res://scenes/restaurant.tscn" id="1_o5324"]
 [ext_resource type="PackedScene" uid="uid://vi5ydb7g6j2x" path="res://nodes/player/player.tscn" id="2_7h5sr"]
 [ext_resource type="PackedScene" uid="uid://dswwd02hmgwf" path="res://ui/player_crosshair.tscn" id="3_ejqch"]
 [ext_resource type="Script" path="res://nodes/customers/customer_manager.gd" id="4_2v1mk"]
+[ext_resource type="PackedScene" uid="uid://jec7d3om6mt1" path="res://nodes/other/game_timer/game_timer.tscn" id="6_x373w"]
 
 [node name="level_scene" type="Node3D"]
 script = ExtResource("1_4sww3")
@@ -24,5 +25,13 @@ script = ExtResource("4_2v1mk")
 
 [node name="CustomerSpawnTimer" type="Timer" parent="."]
 
+[node name="GameTimer" parent="." instance=ExtResource("6_x373w")]
+offset_left = 33.0
+offset_top = 29.0
+offset_right = 183.0
+offset_bottom = 56.0
+time_seconds = 240
+
 [connection signal="customer_satisfied" from="CustomerManager" to="." method="_order_completed"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_spawn_customer"]
+[connection signal="timer_finished" from="GameTimer" to="." method="_game_over"]

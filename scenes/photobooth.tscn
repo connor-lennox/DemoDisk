@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbddid81phlen"]
+
+[ext_resource type="PackedScene" uid="uid://bc7fw6ecvwcv6" path="res://scenes/restaurant.tscn" id="1_dbmgk"]
+[ext_resource type="PackedScene" uid="uid://cvbmxw0txea1i" path="res://assets/photo_props/Food_Udon.gltf" id="2_41o7j"]
+[ext_resource type="PackedScene" uid="uid://dl8r0rpcyvbpu" path="res://assets/photo_props/Pizza.glb" id="3_5v4ul"]
+[ext_resource type="PackedScene" uid="uid://dv5allwo5wlll" path="res://assets/food/Soda.glb" id="4_sv3xm"]
+[ext_resource type="PackedScene" uid="uid://bf33khcnfppid" path="res://assets/restaurant/Plate.glb" id="5_fnfe7"]
+[ext_resource type="PackedScene" uid="uid://cnmax5i0ol10n" path="res://assets/photo_props/Pancakes_Stack.glb" id="6_gb5vu"]
+
+[node name="photobooth" type="Node"]
+
+[node name="Restaurant" parent="." instance=ExtResource("1_dbmgk")]
+
+[node name="diner_midwall" parent="Restaurant" index="8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.981371, 0.168)
+
+[node name="Food_Udon" parent="." instance=ExtResource("2_41o7j")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.469426, 1.70689, 1.4602)
+
+[node name="Pizza" parent="." instance=ExtResource("3_5v4ul")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.545731, 1.62763, 0.927698)
+
+[node name="Soda" parent="." instance=ExtResource("4_sv3xm")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.183011, 1.67413, 0.908622)
+
+[node name="Plate" parent="." instance=ExtResource("5_fnfe7")]
+transform = Transform3D(0.249256, 0, 0.0192755, 0, 0.25, 0, -0.0192755, 0, 0.249256, -0.0581478, 1.63486, 1.19167)
+
+[node name="Pancakes_Stack" parent="Plate" instance=ExtResource("6_gb5vu")]
+transform = Transform3D(0.8, 0, 7.45058e-09, 0, 0.8, 0, -7.45058e-09, 0, 0.8, -0.101589, 0.248416, 0.0719881)
+
+[editable path="Restaurant"]

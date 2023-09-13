@@ -4,6 +4,7 @@ const PLATE_RETURN_TIME = 10
 
 @onready var customer_manager: CustomerManager = $CustomerManager
 @onready var customer_spawn_timer = $CustomerSpawnTimer
+@onready var player = $Player
 
 @onready var sink = $Restaurant/Stations/SinkStation/Sink
 
@@ -24,3 +25,8 @@ func _order_completed():
 func _wait_and_return_plate():
 	await get_tree().create_timer(PLATE_RETURN_TIME).timeout
 	sink.generate_dirty_plate()
+
+func _game_over():
+	player.locked = true
+	await get_tree().create_timer(2).timeout
+	SceneManager.switch_to_game_over()
