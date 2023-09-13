@@ -11,3 +11,9 @@ func _init(req: Array[OrderItem]=[]):
 
 func required_food_items():
 	return requirements.map(func(r): return r.food_item) as Array[FoodItemType]
+
+func total_price():
+	var total = 0
+	for item in requirements:
+		total += item.price
+	return total

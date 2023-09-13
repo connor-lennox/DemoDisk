@@ -5,7 +5,7 @@ const LINE_SPACING = 1.3
 const BACK_OF_LINE = 10
 const WALK_FORWARD_DELAY = 1
 
-signal customer_satisfied
+signal customer_satisfied(order)
 
 var entrees = [
 	preload("res://nodes/customers/order_items/burger_cheese_order_item.tres"), 
@@ -43,7 +43,7 @@ func pop_customer():
 		return
 	
 	_remove_customer(customer)
-	customer_satisfied.emit()
+	customer_satisfied.emit(customer.order)
 	
 	await get_tree().create_timer(WALK_FORWARD_DELAY).timeout
 	for i in range(len(customers)):

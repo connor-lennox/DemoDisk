@@ -10,3 +10,4 @@ script = ExtResource("1_mbdkj")
 food_item = ExtResource("1_mbrx0")
 voice_line = ExtResource("3_kwar6")
 icon = ExtResource("2_wqnxn")
+price = 13

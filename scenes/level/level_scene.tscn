@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgs68t5c8jjj0"]
+[gd_scene load_steps=9 format=3 uid="uid://dgs68t5c8jjj0"]
 
 [ext_resource type="Script" path="res://scenes/level/level_scene.gd" id="1_4sww3"]
 [ext_resource type="PackedScene" uid="uid://bc7fw6ecvwcv6" path="res://scenes/restaurant.tscn" id="1_o5324"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dswwd02hmgwf" path="res://ui/player_crosshair.tscn" id="3_ejqch"]
 [ext_resource type="Script" path="res://nodes/customers/customer_manager.gd" id="4_2v1mk"]
 [ext_resource type="PackedScene" uid="uid://jec7d3om6mt1" path="res://nodes/other/game_timer/game_timer.tscn" id="6_x373w"]
+[ext_resource type="PackedScene" uid="uid://djyb6e3vby05q" path="res://nodes/other/coin_counter/coin_counter.tscn" id="7_r7b05"]
+[ext_resource type="AudioStream" uid="uid://cupxuwbtiqywq" path="res://assets/sounds/level_end_bell.ogg" id="8_mrog8"]
 
 [node name="level_scene" type="Node3D"]
 script = ExtResource("1_4sww3")
@@ -30,7 +32,21 @@ offset_left = 33.0
 offset_top = 29.0
 offset_right = 183.0
 offset_bottom = 56.0
-time_seconds = 5
+time_seconds = 240
+
+[node name="CoinCounter" parent="." instance=ExtResource("7_r7b05")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -130.0
+offset_top = 23.0
+offset_right = -26.0
+offset_bottom = 62.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="LevelEndSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mrog8")
 
 [connection signal="customer_satisfied" from="CustomerManager" to="." method="_order_completed"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_spawn_customer"]

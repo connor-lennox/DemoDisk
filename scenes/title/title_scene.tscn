@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn7fbs3cbbhs7"]
+[gd_scene load_steps=6 format=3 uid="uid://bn7fbs3cbbhs7"]
 
 [ext_resource type="Script" path="res://scenes/title/title_scene.gd" id="1_rdb1y"]
+[ext_resource type="Texture2D" uid="uid://dxjtvroslq3sj" path="res://assets/title/title_text.png" id="2_5d2od"]
 [ext_resource type="PackedScene" uid="uid://bc7fw6ecvwcv6" path="res://scenes/restaurant.tscn" id="2_a70bl"]
 [ext_resource type="Theme" uid="uid://bhns48wk8n48i" path="res://ui/ui_theme.tres" id="2_di8j4"]
 [ext_resource type="PackedScene" uid="uid://03f307g5cj2y" path="res://nodes/customers/customer.tscn" id="3_rcq0s"]
 
 [node name="TitleScene" type="Node"]
 script = ExtResource("1_rdb1y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 30.0
+offset_top = 35.0
+offset_right = 456.0
+offset_bottom = 106.0
+texture = ExtResource("2_5d2od")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 2

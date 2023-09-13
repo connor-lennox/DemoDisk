@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://djyb6e3vby05q"]
+
+[ext_resource type="Script" path="res://nodes/other/coin_counter/coin_counter.gd" id="1_hroa8"]
+[ext_resource type="Texture2D" uid="uid://sdxmt0xi10lo" path="res://assets/icons/shiny-coin.png" id="2_lcc1h"]
+
+[node name="CoinCounter" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 2
+script = ExtResource("1_hroa8")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoinIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -4.0
+offset_right = 1.0
+offset_bottom = 43.0
+texture = ExtResource("2_lcc1h")
+expand_mode = 3

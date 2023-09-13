@@ -5,6 +5,8 @@ const PLATE_RETURN_TIME = 10
 @onready var customer_manager: CustomerManager = $CustomerManager
 @onready var customer_spawn_timer = $CustomerSpawnTimer
 @onready var player = $Player
+@onready var coin_counter = $CoinCounter
+@onready var level_end_sfx = $LevelEndSfx
 
 @onready var sink = $Restaurant/Stations/SinkStation/Sink
 
@@ -19,8 +21,9 @@ func _spawn_customer():
 	customer_spawn_timer.wait_time = randf_range(15, 20)
 	customer_spawn_timer.start()
 
-func _order_completed():
+func _order_completed(order):
 	_wait_and_return_plate()
+	coin_counter.add_coins(order.total_price())
 
 func _wait_and_return_plate():
 	await get_tree().create_timer(PLATE_RETURN_TIME).timeout
@@ -28,5 +31,6 @@ func _wait_and_return_plate():
 
 func _game_over():
 	player.locked = true
-	await get_tree().create_timer(1).timeout
+	level_end_sfx.play()
+	await get_tree().create_timer(1.5).timeout
 	SceneManager.switch_to_game_over()

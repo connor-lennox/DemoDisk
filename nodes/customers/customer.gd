@@ -32,6 +32,7 @@ signal order_satisfied
 @onready var character_root: Node3D = $CharacterRoot
 @onready var item_receiver: Node3D = $ItemReceiver
 @onready var dialog_player = $DialogPlayer
+@onready var coin_sfx = $CoinSfx
 @onready var order_root = $OrderRoot
 
 var mech: Node3D
@@ -156,6 +157,7 @@ func _check_requirements_satisfied():
 	return len(order.requirements) == len(received_items)
 
 func _complete_order():
+	coin_sfx.play()
 	_play_dialog_line(leaving_line)
 	interactable = false
 	_clear_order_icons()
