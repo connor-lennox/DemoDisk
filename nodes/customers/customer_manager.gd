@@ -51,6 +51,8 @@ func pop_customer():
 	
 	if len(customers) > 0:
 		_set_active_customer(customers[0])
+	else:
+		active_customer = null
 
 
 func _remove_customer(customer: Customer):
