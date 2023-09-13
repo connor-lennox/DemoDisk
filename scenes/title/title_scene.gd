@@ -3,6 +3,7 @@ extends Node
 @onready var camera_pivot = $CameraPivot
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Bgm.play_title_music()
 
 func _process(delta):

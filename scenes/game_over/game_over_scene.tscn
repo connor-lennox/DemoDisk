@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckr0b6nbqw4jp"]
+[gd_scene load_steps=8 format=3 uid="uid://ckr0b6nbqw4jp"]
 
+[ext_resource type="Script" path="res://scenes/game_over/game_over_scene.gd" id="1_4iw82"]
 [ext_resource type="Texture2D" uid="uid://7tytr3pnc2mo" path="res://assets/game_over/game_over_screen.png" id="1_dolju"]
 [ext_resource type="PackedScene" uid="uid://bf33khcnfppid" path="res://assets/restaurant/Plate.glb" id="2_had27"]
 [ext_resource type="PackedScene" uid="uid://c4gg6qmfd0hdc" path="res://assets/food/Burger.glb" id="3_kypvq"]
@@ -10,6 +11,7 @@
 viewport_path = NodePath("SubViewport")
 
 [node name="GameOverScene" type="Node"]
+script = ExtResource("1_4iw82")
 
 [node name="Overlay" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -56,3 +58,5 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("5_bay7k")
 text = "Back to Title"
+
+[connection signal="pressed" from="Button" to="." method="_back_to_title"]

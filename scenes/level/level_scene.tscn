@@ -30,7 +30,7 @@ offset_left = 33.0
 offset_top = 29.0
 offset_right = 183.0
 offset_bottom = 56.0
-time_seconds = 240
+time_seconds = 5
 
 [connection signal="customer_satisfied" from="CustomerManager" to="." method="_order_completed"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_spawn_customer"]

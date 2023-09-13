@@ -28,5 +28,5 @@ func _wait_and_return_plate():
 
 func _game_over():
 	player.locked = true
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	SceneManager.switch_to_game_over()
