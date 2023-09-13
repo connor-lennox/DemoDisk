@@ -2,7 +2,10 @@ extends Node
 
 const TIME_TO_MOVE = 0.5
 
-@onready var tutorial_points = $TutorialPoints.get_children()
+@onready var tutorial_points = [
+	$TutorialPoints/Point0, $TutorialPoints/Point1, $TutorialPoints/Point2, $TutorialPoints/Point3, $TutorialPoints/Point4, $TutorialPoints/Point5
+]
+
 @onready var tutorial_cam = $TutorialCam
 @onready var tutorial_text: Label = $"%TutorialText"
 @onready var swish_audio = $SwishAudio
