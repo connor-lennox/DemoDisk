@@ -22,4 +22,7 @@ camera_x_limit = 40
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
 script = ExtResource("4_2v1mk")
 
+[node name="CustomerSpawnTimer" type="Timer" parent="."]
+
 [connection signal="customer_satisfied" from="CustomerManager" to="." method="_order_completed"]
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_spawn_customer"]
