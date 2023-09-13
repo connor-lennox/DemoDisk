@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="DemoDisk"
+config/name="Lunch Rush"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://assets/icons/burger_deluxe_ds.png"
 
 [autoload]
 
