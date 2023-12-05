@@ -27,9 +27,9 @@ lifetime_randomness = 0.2
 particle_flag_align_y = true
 spread = 180.0
 flatness = 1.0
-gravity = Vector3(0, 0.5, 0)
 initial_velocity_min = 0.25
 initial_velocity_max = 0.25
+gravity = Vector3(0, 0.5, 0)
 scale_curve = SubResource("CurveTexture_b1vom")
 color_ramp = SubResource("GradientTexture1D_4abhu")
 

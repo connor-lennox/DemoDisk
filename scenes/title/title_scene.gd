@@ -4,6 +4,7 @@ extends Node
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$MarginContainer/VBoxContainer/PlayButton.call_deferred("grab_focus")
 	Bgm.play_title_music()
 
 func _process(delta):

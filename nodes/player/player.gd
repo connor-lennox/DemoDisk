@@ -15,6 +15,7 @@ var interacting: bool = false
 var locked: bool = false
 
 @export var mouse_sens = 0.15
+@export var controller_sens = 2.2
 var camera_anglev=0
 
 @export var camera_x_limit = 35
@@ -45,6 +46,15 @@ func _process(_delta):
 		move_to_station(current_station - 2 if current_station > 1 else len(stations) - (2 - current_station))
 	if Input.is_action_just_pressed("interact") and not interacting:
 		try_interact()
+	
+	
+	# Process controller-driven rotation
+	var controller_rotation = Input.get_vector("rotate_right", "rotate_left", "rotate_down", "rotate_up").normalized() * controller_sens
+	
+	camera_rig.rotate_y(deg_to_rad(controller_rotation.x))
+	camera_rig.rotate_object_local(Vector3.RIGHT, deg_to_rad(controller_rotation.y))
+	camera_rig.rotation_degrees.y = clamp(camera_rig.rotation_degrees.y, -camera_x_limit, camera_x_limit)
+	camera_rig.rotation_degrees.x = clamp(camera_rig.rotation_degrees.x, -camera_y_limit, camera_y_limit)
 
 
 func _input(event):

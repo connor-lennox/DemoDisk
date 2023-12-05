@@ -36,22 +36,28 @@ theme_override_constants/separation = 8
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../LevelSelectButton")
 text = "Play"
 
 [node name="LevelSelectButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../TutorialButton")
 disabled = true
 text = "Level Select"
 
 [node name="TutorialButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../LevelSelectButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
 text = "Tutorial"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../TutorialButton")
 text = "Exit"
 
 [node name="Restaurant" parent="." instance=ExtResource("2_a70bl")]
